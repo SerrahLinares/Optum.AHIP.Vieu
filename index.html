@@ -1,0 +1,967 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AHIP 2026 — Optum Executive Prep Guide</title>
+<style>
+  :root {
+    --pearl: #EEEEEE; --white: #FFFFFF; --ink: #333333; --ink-soft: #666666;
+    --ink-muted: #999999; --accent: #7744FF;
+    --accent-tint: rgba(119,68,255,0.07); --accent-tint-strong: rgba(119,68,255,0.13);
+    --green: #00EC8A; --yellow: #FFE299; --red: #FF5363;
+    --card-shadow: 0 2px 12px rgba(51,51,51,0.08), 0 0 0 1px rgba(255,255,255,0.9);
+    --transition: 0.18s ease;
+  }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  body { font-family:'Segoe UI','Helvetica Neue',Arial,sans-serif; background:var(--pearl); color:var(--ink); min-height:100vh; }
+  body::before { content:''; position:fixed; inset:0; background-image:radial-gradient(circle,rgba(119,68,255,0.10) 1px,transparent 1px); background-size:28px 28px; pointer-events:none; z-index:0; }
+  /* HEADER */
+  .site-header { position:sticky; top:0; z-index:100; background:rgba(238,238,238,0.95); backdrop-filter:blur(12px); border-bottom:1px solid rgba(119,68,255,0.15); padding:0 32px; height:64px; display:flex; align-items:center; justify-content:space-between; }
+  .header-left { display:flex; align-items:center; gap:20px; }
+  .optum-logo { display:flex; align-items:center; gap:7px; }
+  .optum-o { width:28px; height:28px; border-radius:50%; background:linear-gradient(135deg,#FF6600,#d95500); display:flex; align-items:center; justify-content:center; }
+  .optum-o-inner { width:12px; height:12px; border-radius:50%; border:2.5px solid white; }
+  .optum-text { font-size:17px; font-weight:800; color:#FF6600; letter-spacing:-0.3px; }
+  .header-divider { width:1px; height:28px; background:rgba(51,51,51,0.18); }
+  .ahip-logo { display:flex; align-items:center; gap:6px; }
+  .ahip-wordmark { font-size:17px; font-weight:900; color:#003087; letter-spacing:1.5px; }
+  .ahip-sub { font-size:8.5px; color:#003087; font-weight:500; line-height:1.3; max-width:110px; }
+  .event-meta { text-align:right; font-size:12px; color:var(--ink-soft); line-height:1.5; }
+  .event-meta strong { color:var(--ink); display:block; font-size:13px; }
+  /* HERO */
+  .hero { position:relative; z-index:1; padding:44px 32px 32px; background:radial-gradient(ellipse 80% 60% at 10% 0%,rgba(119,68,255,0.09) 0%,transparent 60%),radial-gradient(ellipse 60% 50% at 90% 100%,rgba(119,68,255,0.06) 0%,transparent 60%); }
+  .hero-eyebrow { font-size:11px; font-weight:700; letter-spacing:2px; color:var(--accent); text-transform:uppercase; margin-bottom:10px; }
+  .hero-title { font-size:34px; font-weight:800; color:var(--ink); line-height:1.15; margin-bottom:10px; letter-spacing:-0.5px; }
+  .hero-subtitle { font-size:14.5px; color:var(--ink-soft); max-width:580px; line-height:1.6; }
+  /* NAV */
+  .account-nav-wrap { position:relative; z-index:1; padding:24px 32px 0; }
+  .account-nav { display:flex; gap:8px; overflow-x:auto; padding-bottom:2px; scrollbar-width:none; }
+  .account-nav::-webkit-scrollbar { display:none; }
+  .account-tab { flex-shrink:0; padding:10px 18px; border-radius:10px 10px 0 0; border:1px solid transparent; border-bottom:none; background:rgba(255,255,255,0.5); color:var(--ink-soft); font-size:13px; font-weight:600; cursor:pointer; transition:var(--transition); position:relative; }
+  .account-tab:hover { background:rgba(255,255,255,0.8); color:var(--ink); }
+  .account-tab.active { background:var(--white); color:var(--accent); border-color:rgba(119,68,255,0.2); border-bottom:2px solid var(--white); margin-bottom:-1px; z-index:2; }
+  .tier-dot { display:inline-block; width:6px; height:6px; border-radius:50%; margin-right:6px; vertical-align:middle; }
+  .tier-1 { background:var(--accent); } .tier-2 { background:var(--ink-muted); }
+  /* MAIN */
+  .main { position:relative; z-index:1; padding:0 32px 48px; }
+  .account-panel { display:none; background:var(--white); border-radius:0 15px 15px 15px; box-shadow:var(--card-shadow); border:1px solid rgba(119,68,255,0.12); overflow:hidden; }
+  .account-panel.active { display:block; animation:fadeIn 0.2s ease; }
+  @keyframes fadeIn { from{opacity:0;transform:translateY(4px);}to{opacity:1;transform:translateY(0);} }
+  /* ACCT HDR */
+  .account-header { padding:26px 32px 22px; border-bottom:1px solid var(--pearl); display:flex; align-items:flex-start; justify-content:space-between; gap:24px; background:radial-gradient(ellipse 50% 100% at 100% 50%,rgba(119,68,255,0.04) 0%,transparent 70%); }
+  .account-header-left { flex:1; }
+  .account-eyebrow { font-size:10px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--accent); margin-bottom:5px; }
+  .account-name { font-size:24px; font-weight:800; color:var(--ink); letter-spacing:-0.5px; margin-bottom:8px; }
+  .account-meta { display:flex; gap:14px; flex-wrap:wrap; }
+  .meta-chip { font-size:12px; color:var(--ink-soft); display:flex; align-items:center; gap:5px; }
+  .meta-chip::before { content:''; display:inline-block; width:3px; height:3px; border-radius:50%; background:var(--ink-muted); }
+  .account-header-right { display:flex; flex-direction:column; align-items:flex-end; gap:8px; flex-shrink:0; }
+  .confidence-badge { padding:4px 11px; border-radius:20px; font-size:11px; font-weight:700; }
+  .conf-confirmed { background:rgba(0,236,138,0.15); color:#00904d; }
+  .conf-likely { background:rgba(255,226,153,0.5); color:#8a6500; }
+  .intent-signals { font-size:12px; color:var(--ink-soft); text-align:right; }
+  .intent-num { font-size:18px; font-weight:800; color:var(--accent); display:block; line-height:1; }
+  /* SECT TABS */
+  .section-tabs { display:flex; border-bottom:1px solid var(--pearl); padding:0 32px; overflow-x:auto; scrollbar-width:none; }
+  .section-tabs::-webkit-scrollbar { display:none; }
+  .section-tab { padding:13px 18px; font-size:13px; font-weight:600; color:var(--ink-muted); cursor:pointer; border:none; background:none; border-bottom:2px solid transparent; transition:var(--transition); white-space:nowrap; flex-shrink:0; }
+  .section-tab:hover { color:var(--ink); }
+  .section-tab.active { color:var(--accent); border-bottom-color:var(--accent); }
+  .section-content { display:none; padding:26px 32px 30px; }
+  .section-content.active { display:block; }
+  /* WHY */
+  .why-grid { display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-bottom:16px; }
+  .why-card { background:var(--pearl); border-radius:12px; padding:17px 18px; border:1px solid rgba(119,68,255,0.07); }
+  .why-card-label { font-size:10px; font-weight:700; letter-spacing:1.8px; text-transform:uppercase; color:var(--accent); margin-bottom:7px; }
+  .why-card-text { font-size:13.5px; color:var(--ink); line-height:1.6; }
+  .hypothesis-box { background:var(--accent-tint); border-left:3px solid var(--accent); border-radius:0 10px 10px 0; padding:15px 18px; }
+  .hypothesis-label { font-size:10px; font-weight:700; letter-spacing:1.8px; text-transform:uppercase; color:var(--accent); margin-bottom:5px; }
+  .hypothesis-text { font-size:13.5px; color:var(--ink); line-height:1.6; font-style:italic; }
+  /* TARGET */
+  .target-card { display:flex; align-items:center; gap:14px; background:var(--white); border:1px solid rgba(119,68,255,0.14); border-radius:12px; padding:14px 18px; margin-top:14px; }
+  .target-avatar { width:42px; height:42px; border-radius:50%; background:var(--accent-tint-strong); display:flex; align-items:center; justify-content:center; font-size:14px; font-weight:800; color:var(--accent); flex-shrink:0; border:1px solid rgba(119,68,255,0.18); }
+  .target-info { flex:1; }
+  .target-name { font-size:14px; font-weight:700; color:var(--ink); margin-bottom:2px; }
+  .target-role { font-size:12px; color:var(--ink-soft); line-height:1.45; }
+  .target-link { font-size:11px; color:var(--accent); text-decoration:none; font-weight:700; padding:5px 12px; border:1px solid rgba(119,68,255,0.28); border-radius:6px; white-space:nowrap; transition:var(--transition); }
+  .target-link:hover { background:var(--accent-tint); }
+  /* CONNECTIONS */
+  .connections-list { display:flex; flex-direction:column; gap:10px; }
+  .connection-card { background:var(--pearl); border-radius:11px; padding:14px 18px; display:flex; align-items:flex-start; gap:13px; border:1px solid transparent; transition:var(--transition); }
+  .connection-card:hover { border-color:rgba(119,68,255,0.14); background:var(--white); }
+  .connection-icon { width:34px; height:34px; border-radius:8px; background:var(--accent-tint-strong); display:flex; align-items:center; justify-content:center; flex-shrink:0; font-size:15px; }
+  .connection-body { flex:1; }
+  .connection-path { font-size:13px; font-weight:600; color:var(--ink); margin-bottom:4px; line-height:1.4; }
+  .connection-note { font-size:12px; color:var(--ink-soft); line-height:1.5; }
+  .connection-strength { padding:3px 10px; border-radius:20px; font-size:11px; font-weight:700; flex-shrink:0; align-self:center; }
+  .strength-direct { background:rgba(0,236,138,0.18); color:#00804a; }
+  .strength-warm { background:rgba(119,68,255,0.11); color:var(--accent); }
+  .strength-indirect { background:rgba(255,226,153,0.5); color:#8a6500; }
+  /* PRIORITIES */
+  .priorities-grid { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+  .priority-card { background:var(--pearl); border-radius:11px; padding:15px 17px; border:1px solid rgba(119,68,255,0.06); transition:var(--transition); }
+  .priority-card:hover { border-color:rgba(119,68,255,0.18); background:var(--white); box-shadow:0 2px 8px rgba(119,68,255,0.07); }
+  .priority-header { display:flex; align-items:center; gap:9px; margin-bottom:7px; }
+  .priority-num { width:22px; height:22px; border-radius:6px; background:var(--accent); color:var(--white); font-size:11px; font-weight:800; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+  .priority-title { font-size:12.5px; font-weight:700; color:var(--ink); line-height:1.3; }
+  .priority-body { font-size:12px; color:var(--ink-soft); line-height:1.6; padding-left:31px; }
+  .optum-solution-tag { display:inline-block; background:var(--accent-tint); color:var(--accent); font-size:10px; font-weight:700; padding:2px 8px; border-radius:4px; margin-top:7px; margin-left:31px; }
+  /* PAYMENT */
+  .payment-alert { background:linear-gradient(135deg,rgba(255,102,0,0.06),rgba(119,68,255,0.06)); border:1px solid rgba(255,102,0,0.2); border-radius:12px; padding:16px 20px; margin-bottom:16px; display:flex; align-items:flex-start; gap:12px; }
+  .payment-alert-icon { width:36px; height:36px; border-radius:8px; background:rgba(255,102,0,0.1); display:flex; align-items:center; justify-content:center; font-size:17px; flex-shrink:0; }
+  .payment-alert-body { flex:1; }
+  .payment-alert-title { font-size:13px; font-weight:700; color:var(--ink); margin-bottom:4px; }
+  .payment-alert-text { font-size:12.5px; color:var(--ink-soft); line-height:1.6; }
+  .payment-cards { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+  .payment-card { background:var(--pearl); border-radius:11px; padding:15px 17px; border:1px solid rgba(255,102,0,0.1); }
+  .payment-card-label { font-size:10px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:#CC5500; margin-bottom:6px; }
+  .payment-card-text { font-size:12.5px; color:var(--ink); line-height:1.6; }
+  .optum-sa-tag { display:inline-block; background:rgba(255,102,0,0.1); color:#CC5500; font-size:10px; font-weight:700; padding:2px 8px; border-radius:4px; margin-top:8px; }
+  /* QUESTIONS */
+  .questions-list { display:flex; flex-direction:column; gap:9px; }
+  .question-item { display:flex; align-items:flex-start; gap:13px; padding:13px 17px; background:var(--pearl); border-radius:10px; border:1px solid transparent; transition:var(--transition); }
+  .question-item:hover { background:var(--white); border-color:rgba(119,68,255,0.14); }
+  .question-mark { width:26px; height:26px; border-radius:50%; background:var(--white); border:1.5px solid rgba(119,68,255,0.28); color:var(--accent); font-size:13px; font-weight:800; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+  .question-text { font-size:13px; color:var(--ink); line-height:1.6; padding-top:2px; }
+  /* FOOTER */
+  .site-footer { position:relative; z-index:1; padding:18px 32px; border-top:1px solid rgba(119,68,255,0.12); display:flex; align-items:center; justify-content:space-between; background:rgba(238,238,238,0.7); }
+  .footer-left { font-size:11px; color:var(--ink-muted); }
+  .footer-right { font-size:11px; color:var(--ink-muted); font-weight:600; }
+
+  /* ATTENDANCE CARD */
+  .attendance-card {
+    background: linear-gradient(135deg, rgba(119,68,255,0.05) 0%, rgba(0,136,204,0.04) 100%);
+    border: 1px solid rgba(119,68,255,0.18);
+    border-radius: 12px; padding: 18px 20px; margin-top: 16px;
+  }
+  .attendance-header { display:flex; align-items:flex-start; justify-content:space-between; gap:16px; margin-bottom:14px; }
+  .attendance-person { flex:1; }
+  .attendance-name { font-size:15px; font-weight:800; color:var(--ink); margin-bottom:2px; }
+  .attendance-role { font-size:12px; color:var(--ink-soft); line-height:1.4; }
+  .attendance-status {
+    flex-shrink:0; padding:5px 12px; border-radius:20px;
+    font-size:11px; font-weight:700; letter-spacing:0.3px; white-space:nowrap;
+  }
+  .status-keynote { background:rgba(119,68,255,0.12); color:var(--accent); }
+  .status-speaker { background:rgba(0,236,138,0.15); color:#007a40; }
+  .status-board { background:rgba(255,226,153,0.5); color:#8a6500; }
+  .status-attendee { background:rgba(51,51,51,0.08); color:var(--ink-soft); }
+  .session-block {
+    background: var(--white); border-radius: 10px; padding: 13px 16px;
+    border-left: 3px solid var(--accent); margin-bottom: 10px;
+  }
+  .session-block:last-child { margin-bottom: 0; }
+  .session-title { font-size:13px; font-weight:700; color:var(--ink); margin-bottom:4px; line-height:1.4; }
+  .session-meta { font-size:11.5px; color:var(--ink-soft); margin-bottom:5px; }
+  .session-desc { font-size:12px; color:var(--ink-soft); line-height:1.55; margin-bottom:8px; }
+  .session-cta {
+    display:inline-block; font-size:11px; font-weight:700; color:var(--accent);
+    text-decoration:none; padding:4px 10px; border:1px solid rgba(119,68,255,0.25);
+    border-radius:6px; transition:var(--transition);
+  }
+  .session-cta:hover { background:var(--accent-tint); }
+  .attendance-note {
+    font-size:12px; color:var(--ink-soft); line-height:1.55;
+    padding:10px 14px; background:var(--pearl); border-radius:8px; margin-top:10px;
+  }
+  .people-stack { display:flex; flex-direction:column; gap:10px; }
+  .person-row {
+    display:flex; align-items:flex-start; gap:12px;
+    padding:12px 16px; background:var(--white);
+    border:1px solid rgba(119,68,255,0.12); border-radius:10px;
+  }
+  .person-avatar {
+    width:38px; height:38px; border-radius:50%; background:var(--accent-tint-strong);
+    display:flex; align-items:center; justify-content:center;
+    font-size:13px; font-weight:800; color:var(--accent); flex-shrink:0;
+    border:1px solid rgba(119,68,255,0.15);
+  }
+  .person-body { flex:1; }
+  .person-name { font-size:13px; font-weight:700; color:var(--ink); }
+  .person-title { font-size:11.5px; color:var(--ink-soft); margin-top:1px; line-height:1.4; }
+  .person-ahip { font-size:11px; color:var(--accent); font-weight:600; margin-top:4px; }
+  @media(max-width:720px){
+    .why-grid,.priorities-grid,.payment-cards{grid-template-columns:1fr;}
+    .hero-title{font-size:26px;} .account-name{font-size:20px;}
+    .site-header,.hero,.account-nav-wrap,.main{padding-left:16px;padding-right:16px;}
+    .account-header,.section-tabs,.section-content{padding-left:16px;padding-right:16px;}
+  }
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="header-left">
+    <div class="optum-logo">
+      <div class="optum-o"><div class="optum-o-inner"></div></div>
+      <span class="optum-text">Optum</span>
+    </div>
+    <div class="header-divider"></div>
+    <div class="ahip-logo">
+      <span class="ahip-wordmark">AHIP</span>
+      <span class="ahip-sub">America's Health<br>Insurance Plans</span>
+    </div>
+  </div>
+  <div class="event-meta">
+    <strong>AHIP 2026 &mdash; Executive Prep Guide</strong>
+    June 9&ndash;10 &nbsp;&middot;&nbsp; Wynn Las Vegas
+  </div>
+</header>
+<section class="hero">
+  <p class="hero-eyebrow">Optum Insight + Optum Financial &nbsp;&middot;&nbsp; Built by Vieu</p>
+  <h1 class="hero-title">AHIP 2026 Intelligence Brief</h1>
+  <p class="hero-subtitle">Account-level intelligence, warm paths, and conversation guides for Optum leadership. Covers prior auth, claims, payments, provider EFT/remittance, member communications, and care management.</p>
+</section>
+<div class="account-nav-wrap">
+  <div class="account-nav">
+    <button class="account-tab active"  onclick="showAccount('centene',this)"><span class="tier-dot tier-1"></span>Centene</button>
+    <button class="account-tab"         onclick="showAccount('elevance',this)"><span class="tier-dot tier-1"></span>Elevance Health</button>
+    <button class="account-tab"         onclick="showAccount('highmark',this)"><span class="tier-dot tier-1"></span>Highmark Health</button>
+    <button class="account-tab"         onclick="showAccount('carefirst',this)"><span class="tier-dot tier-1"></span>CareFirst BCBS</button>
+    <button class="account-tab"         onclick="showAccount('cambia',this)"><span class="tier-dot tier-1"></span>Cambia Health</button>
+    <button class="account-tab"         onclick="showAccount('kaiser',this)"><span class="tier-dot tier-1"></span>Kaiser Permanente</button>
+    <button class="account-tab"         onclick="showAccount('hcsc',this)"><span class="tier-dot tier-2"></span>HCSC</button>
+    <button class="account-tab"         onclick="showAccount('aetna',this)"><span class="tier-dot tier-1"></span>Aetna</button>
+  </div>
+</div>
+<main class="main">
+
+<div id="panel-centene" class="account-panel">
+  <div class="account-header">
+    <div class="account-header-left">
+      <div class="account-eyebrow">Tier 1 &middot; Confirmed Attending</div>
+      <div class="account-name">Centene Corporation</div>
+      <div class="account-meta"><span class="meta-chip">36K employees</span><span class="meta-chip">$174.6B revenue (2025)</span><span class="meta-chip">28M+ members</span><span class="meta-chip">#1 Medicaid + Marketplace</span></div>
+    </div>
+    <div class="account-header-right">
+      <div class="confidence-badge conf-confirmed">Confirmed</div>
+      <div class="intent-signals"><span class="intent-num">20</span>intent signals/yr</div>
+    </div>
+  </div>
+  <div class="section-tabs"><button class="section-tab active" onclick="showSection(this,'cen-why')">Overview &amp; Why Now</button><button class="section-tab" onclick="showSection(this,'cen-conn')">Connections</button><button class="section-tab" onclick="showSection(this,'cen-pay')">Payment Intelligence</button><button class="section-tab" onclick="showSection(this,'cen-pri')">Priorities &amp; Messaging</button><button class="section-tab" onclick="showSection(this,'cen-q')">Questions to Ask</button></div>
+  <div id="cen-why" class="section-content active"><div class="why-grid">
+    <div class="why-card"><div class="why-card-label">Why This Account</div><div class="why-card-text">Nation's #1 Medicaid and Marketplace insurer. HBR rose to 91.9% in 2025, creating intense pressure on payment integrity, prior auth, and claims. New exec structure April 2026 &mdash; fresh leadership, fresh buying decisions. 20% revenue growth to $174.6B.</div></div>
+    <div class="why-card"><div class="why-card-label">Why Now</div><div class="why-card-text">Guidance withdrawn July 2025 after Marketplace risk-adjustment miss. PA modernization publicly committed since June 2025. New Group Presidents (Finke, Carson) both started April 2026 &mdash; 90-day window open. Cash flow cited as driven by &ldquo;timing of CMS and state remittances&rdquo; &mdash; payment ops are a live financial lever.</div></div>
+  </div>
+  <div class="hypothesis-box"><div class="hypothesis-label">Messaging Hypothesis</div><div class="hypothesis-text">Optum can turn Centene's 2026 margin-recovery momentum into durable performance by combining InterQual Auth Accelerator for PA modernization, payment integrity to attack claims leakage, risk adjustment analytics to prevent future guidance-withdrawal events, and Settlement Advocate to modernize provider payment and remittance ops across 28M+ member claims volume.</div></div>
+  <div style="margin-top:18px;">
+    <div style="font-size:10px;font-weight:700;letter-spacing:1.8px;text-transform:uppercase;color:var(--accent);margin-bottom:10px;">AHIP 2026 ATTENDANCE</div>
+    <div class="people-stack"><div class="person-row">
+    <div class="person-avatar">DF</div>
+    <div class="person-body">
+      <div class="person-name">Daniel Finke</div>
+      <div class="person-title">Group President, Markets &amp; Commercial &middot; Centene Corporation<br>Started April 2026. Former EVP &amp; President, Aetna (CVS Health).</div>
+      <div class="person-ahip">&#9679; Target — not a confirmed speaker. Likely attending as executive. Warm path: Sarah London (CEO, Centene &mdash; 1 direct Optum connection).</div>
+    </div>
+  </div><div class="attendance-card">
+  <div class="attendance-header">
+    <div class="attendance-person">
+      <div class="attendance-name">Alice Hm Chen, MD, MPH</div>
+      <div class="attendance-role">Chief Medical Officer, Government Programs &middot; Centene Corporation</div>
+    </div>
+    <div class="attendance-status status-speaker">Confirmed Speaker</div>
+  </div>
+  <div class="session-block">
+    <div class="session-title">Medicaid Community Engagement: From Eligibility to Continuity of Care</div>
+    <div class="session-meta">Jun 9, 2026 &middot; 11:40 am &ndash; 12:25 pm &middot; Concurrent Session Series 1</div>
+    <div class="session-desc">Panel exploring how health plans advance affordability while maintaining access and quality, strengthening provider and community partnerships, and responding to growing operational and regulatory demands in Medicaid.</div>
+    <a href="#cen-q" class="session-cta" onclick="scrollToQ('cen-q')">&#8594; See prep questions</a>
+  </div>
+  <div class="attendance-note">Chen is the confirmed Centene face at AHIP26. Her session maps directly to Optum's Medicaid operations, payment integrity, and care management capabilities. Use her as a warm intro path to Finke if approached well after her session.</div>
+</div></div>
+  </div>
+</div>
+<div id="cen-conn" class="section-content"><div class="connections-list"><div class="connection-card">
+      <div class="connection-icon">&#11088;</div>
+      <div class="connection-body"><div class="connection-path">Sarah M. London (CEO) &mdash; Former Chief Product Officer, Optum Analytics</div><div class="connection-note">1 direct + 99 indirect Optum paths. London was CPO at Optum Analytics before becoming Centene CEO, and prior Operating Partner at Optum Ventures. Disposition: Neutral. Buyer status confirmed. Strongest warm path in the entire event roster.</div></div>
+      <div class="connection-strength strength-direct">Direct</div>
+    </div><div class="connection-card">
+      <div class="connection-icon">&#128279;</div>
+      <div class="connection-body"><div class="connection-path">Dr. Patrick Conway &rarr; Daniel Finke</div><div class="connection-note">Exec-peer path via healthcare quality and CMS networks. Conway's MA and Medicaid policy background overlaps with Finke's prior Aetna Government role.</div></div>
+      <div class="connection-strength strength-warm">Warm</div>
+    </div></div></div><div id="cen-pay" class="section-content"><div class="payment-alert">
+    <div class="payment-alert-icon">&#x1F4B3;</div>
+    <div class="payment-alert-body"><div class="payment-alert-title">Payment Infrastructure Signal</div><div class="payment-alert-text">Centene uses PaySpan Health across multiple subsidiary plans (Coordinated Care, Envolve Vision, Carolina Complete Health) for EFT and ERA delivery. Cash flow in Q4 2025 was explicitly driven by &ldquo;timing of CMS and state remittances, claims and other payments&rdquo; &mdash; confirming that remittance operations are a material financial variable. Centene is also deploying AI to automate provider payment processing, per the 2025 proxy statement.</div></div>
+  </div>
+  <div class="payment-cards">
+    <div class="payment-card"><div class="payment-card-label">Current State</div><div class="payment-card-text">EFT/ERA delivered via PaySpan Health across subsidiary plans. Multiple subsidiary portals create a fragmented provider experience &mdash; different enrollment flows, payer IDs, and remittance workflows per plan brand.</div><div class="optum-sa-tag">Fragmentation risk across 28M-member claims volume</div></div>
+    <div class="payment-card"><div class="payment-card-label">Settlement Advocate Opportunity</div><div class="payment-card-text">Centene's AI-led payment automation agenda creates an opening for Settlement Advocate's flexible EFT and vCC infrastructure. Consolidating remittance delivery across Medicaid, Marketplace, and Medicare sub-plans under a unified payment management layer reduces provider abrasion and improves cash flow predictability &mdash; aligning directly to the financial lever Centene has already named.</div><div class="optum-sa-tag">Optum Settlement Advocate &mdash; EFT + vCC + Remittance</div></div>
+  </div></div><div id="cen-pri" class="section-content"><div class="priorities-grid"><div class="priority-card">
+      <div class="priority-header"><div class="priority-num">1</div><div class="priority-title">Prior Auth Modernization</div></div>
+      <div class="priority-body">PA simplification publicly committed since June 2025. CMS-0057 requires 72hr urgent / 7-day standard. Finke must show operational execution across 28M members.</div>
+      <div class="optum-solution-tag">InterQual Auth Accelerator + Digital Auth Complete</div>
+    </div><div class="priority-card">
+      <div class="priority-header"><div class="priority-num">2</div><div class="priority-title">Payment Integrity Reset</div></div>
+      <div class="priority-body">HBR 91.9% vs 88.3% prior year. Pre-pay controls are the fastest lever for 2026 margin improvement across Medicaid, Marketplace, and Medicare claims.</div>
+      <div class="optum-solution-tag">Comprehensive PI + Claims Edit System</div>
+    </div><div class="priority-card">
+      <div class="priority-header"><div class="priority-num">3</div><div class="priority-title">Provider Payment Modernization</div></div>
+      <div class="priority-body">Multi-subsidiary EFT/ERA fragmentation via PaySpan creates provider abrasion. Remittance timing is a material cash flow variable. AI payment automation is a stated 2025 proxy priority.</div>
+      <div class="optum-solution-tag">Optum Settlement Advocate &mdash; EFT + vCC + Remittance</div>
+    </div><div class="priority-card">
+      <div class="priority-header"><div class="priority-num">4</div><div class="priority-title">Risk Adjustment Accuracy</div></div>
+      <div class="priority-body">Guidance-withdrawal-level Marketplace risk-adjustment miss July 2025. Morbidity assumptions, coding, and risk transfer were all out of sync. Must not repeat.</div>
+      <div class="optum-solution-tag">Optum Symmetry Risk Engine + Epic Payer Platform</div>
+    </div><div class="priority-card">
+      <div class="priority-header"><div class="priority-num">5</div><div class="priority-title">Behavioral Health Cost Control</div></div>
+      <div class="priority-body">Named as #1 driver of Medicaid medical cost pressure. Access and affordability must improve simultaneously across 28M+ government-program members.</div>
+      <div class="optum-solution-tag">Optum Behavioral Health + AbleTo</div>
+    </div><div class="priority-card">
+      <div class="priority-header"><div class="priority-num">6</div><div class="priority-title">Quality &amp; Stars Performance</div></div>
+      <div class="priority-body">Stars performance influences revenue and growth across all government programs. Multiyear quality strategy active. Stars risk is tied to funding, not just reputation.</div>
+      <div class="optum-solution-tag">Optum Quality Solutions + AI Analytics</div>
+    </div></div></div><div id="cen-q" class="section-content"><div class="questions-list"><div class="question-item"><div class="question-mark">?</div><div class="question-text">Your Q4 2025 cash flow was driven by timing of CMS and state remittances &mdash; how much variability do you see in provider payment and remittance operations across your subsidiary plans, and is that friction you're actively trying to reduce?</div></div><div class="question-item"><div class="question-mark">?</div><div class="question-text">You've publicly committed to PA simplification since June 2025 &mdash; where are you in operationalizing that across 27 million members, and what's the biggest friction point your team keeps hitting?</div></div><div class="question-item"><div class="question-mark">?</div><div class="question-text">After the July 2025 risk adjustment miss, what changes have you made to how morbidity data and coding accuracy feed into your financial planning process?</div></div><div class="question-item"><div class="question-mark">?</div><div class="question-text">As you integrate the new Group President structure, how are you thinking about vendor consolidation versus best-of-breed for claims and payment operations?</div></div><div class="question-item"><div class="question-mark">?</div><div class="question-text">When you look at your 2025 Medicaid cost trend, how much of the behavioral health pressure is a network access issue versus a care management and coordination issue?</div></div></div></div>
+</div>
+<div id="panel-elevance" class="account-panel">
+  <div class="account-header">
+    <div class="account-header-left">
+      <div class="account-eyebrow">Tier 1 &middot; Confirmed Attending</div>
+      <div class="account-name">Elevance Health</div>
+      <div class="account-meta"><span class="meta-chip">44K employees</span><span class="meta-chip">$197.6B FY2025 revenue</span><span class="meta-chip">104M consumers</span><span class="meta-chip">45.2M medical members</span></div>
+    </div>
+    <div class="account-header-right">
+      <div class="confidence-badge conf-confirmed">Confirmed</div>
+      <div class="intent-signals"><span class="intent-num">0</span>Norwood signals/yr</div>
+    </div>
+  </div>
+  <div class="section-tabs"><button class="section-tab active" onclick="showSection(this,'elv-why')">Overview &amp; Why Now</button><button class="section-tab" onclick="showSection(this,'elv-conn')">Connections</button><button class="section-tab" onclick="showSection(this,'elv-pay')">Payment Intelligence</button><button class="section-tab" onclick="showSection(this,'elv-pri')">Priorities &amp; Messaging</button><button class="section-tab" onclick="showSection(this,'elv-q')">Questions to Ask</button></div>
+  <div id="elv-why" class="section-content active"><div class="why-grid">
+    <div class="why-card"><div class="why-card-label">Why This Account</div><div class="why-card-text">Second-largest US health insurer. 104M consumers. Just consolidated all Health Benefits under Felicia Norwood. $935M CMS MA risk-adjustment accrual in Q1 2026 makes compliance-grade data and workflow control an active urgency. Carelon overlaps Optum in some areas, but execution gaps are real.</div></div>
+    <div class="why-card"><div class="why-card-label">Why Now</div><div class="why-card-text">Management reorganized Feb 2026 &mdash; CFO Kaye now owns Carelon, Norwood owns all Health Benefits. FY2026 EPS guidance raised to $26.75. Elevated medical cost in ACA and Medicaid through 2025. Active hiring in payment integrity, reimbursement, and CarelonRx product signals gaps Optum can fill.</div></div>
+  </div>
+  <div class="hypothesis-box"><div class="hypothesis-label">Messaging Hypothesis</div><div class="hypothesis-text">Optum can reduce provider and member friction across data, pharmacy, and care-delivery workflows by strengthening interoperability, AI-ready data foundations, and operational controls &mdash; directly supporting Elevance's affordability commitments and regulatory resilience after the $935M CMS accrual.</div></div>
+  <div style="margin-top:18px;">
+    <div style="font-size:10px;font-weight:700;letter-spacing:1.8px;text-transform:uppercase;color:var(--accent);margin-bottom:10px;">AHIP 2026 ATTENDANCE</div>
+    <div class="people-stack"><div class="person-row">
+    <div class="person-avatar">FN</div>
+    <div class="person-body">
+      <div class="person-name">Felicia Norwood</div>
+      <div class="person-title">EVP &amp; Chief Health Benefits Officer &middot; Elevance Health<br>Owns Medicaid, Medicare &amp; Commercial Health Benefits P&amp;L</div>
+      <div class="person-ahip">&#9679; Target — not a confirmed AHIP26 speaker. 0 intent signals this year. Approach via Lavu or Boudreaux first.</div>
+    </div>
+  </div><div class="person-row">
+    <div class="person-avatar">RL</div>
+    <div class="person-body">
+      <div class="person-name">Ratnakar Lavu</div>
+      <div class="person-title">EVP &amp; Chief Digital Information Officer &middot; Elevance Health<br>Digital Platforms and AI Office &mdash; interoperability + AI workflow</div>
+      <div class="person-ahip">&#9679; Target — not confirmed as AHIP26 speaker. Best tech entry point for AI and interoperability conversation.</div>
+    </div>
+  </div><div class="attendance-card">
+  <div class="attendance-header">
+    <div class="attendance-person">
+      <div class="attendance-name">Jennifer L. Kowalski</div>
+      <div class="attendance-role">VP, Public Policy Institute &middot; Elevance Health</div>
+    </div>
+    <div class="attendance-status status-speaker">Confirmed Speaker</div>
+  </div>
+  <div class="session-block" style="border-left-color:var(--ink-muted);"><div class="session-desc" style="margin:0;">Confirmed on AHIP26 speaker roster. Specific session details not yet published on the public agenda. Kowalski covers policy and regulatory strategy &mdash; relevant context for the $935M CMS MA accrual and prior auth commitments.</div></div>
+  <div class="attendance-note">Policy role gives her direct visibility into the compliance pressures driving Elevance's 2026 agenda. Use her as a door-opener and intelligence source, not the primary buyer target.</div>
+</div></div>
+  </div>
+</div>
+<div id="elv-conn" class="section-content"><div class="connections-list"><div class="connection-card">
+      <div class="connection-icon">&#128279;</div>
+      <div class="connection-body"><div class="connection-path">Dr. Patrick Conway &rarr; Ratnakar Lavu (CDIO)</div><div class="connection-note">Plausible exec-peer outreach around AI, affordability, and provider simplification. Conway's CMS and value-based care background overlaps with Lavu's interoperability mandate.</div></div>
+      <div class="connection-strength strength-warm">Warm</div>
+    </div><div class="connection-card">
+      <div class="connection-icon">&#128279;</div>
+      <div class="connection-body"><div class="connection-path">Senior UnitedHealth / Optum leadership &rarr; Gail K. Boudreaux (CEO)</div><div class="connection-note">Boudreaux spent significant tenure at UnitedHealthcare before joining Elevance. Shared employer history makes this viable as executive air cover.</div></div>
+      <div class="connection-strength strength-warm">Warm</div>
+    </div><div class="connection-card">
+      <div class="connection-icon">&#128202;</div>
+      <div class="connection-body"><div class="connection-path">Shantanu Agrawal (Board, Performant Healthcare) &rarr; Felicia Norwood</div><div class="connection-note">4 indirect paths to Norwood. 0 intent signals from Norwood this year &mdash; approach via Lavu or Boudreaux first.</div></div>
+      <div class="connection-strength strength-indirect">Indirect</div>
+    </div></div></div><div id="elv-pay" class="section-content"><div class="payment-alert">
+    <div class="payment-alert-icon">&#x1F4B3;</div>
+    <div class="payment-alert-body"><div class="payment-alert-title">Payment Infrastructure Signal</div><div class="payment-alert-text">Elevance operates Availity as its primary provider portal for EFT enrollment and ERA delivery across BCBS affiliated plans. The $935M CMS MA risk-adjustment accrual and ongoing medical cost pressures are accelerating internal investment in payment integrity AI &mdash; Carelon's PI division is actively building AI lead identification. Provider payment accuracy and auditability are now board-level concerns.</div></div>
+  </div>
+  <div class="payment-cards">
+    <div class="payment-card"><div class="payment-card-label">Current State</div><div class="payment-card-text">EFT/ERA managed through Availity across BCBS affiliated plans. Carelon Payment Integrity uses AI-driven lead identification post-pay. The $935M CMS accrual creates pressure for pre-pay controls and audit-grade remittance documentation across the Health Benefits P&L Norwood now owns.</div><div class="optum-sa-tag">CMS accrual creates compliance-grade remittance urgency</div></div>
+    <div class="payment-card"><div class="payment-card-label">Settlement Advocate Opportunity</div><div class="payment-card-text">With 104M consumers and 45M medical members, even small improvements in provider payment friction have material scale impact. Settlement Advocate's flexible EFT and vCC model complements Carelon's PI build by improving provider-side remittance acceptance rates and reducing payment disputes that create downstream compliance risk &mdash; especially timely post-$935M accrual.</div><div class="optum-sa-tag">Optum Settlement Advocate &mdash; EFT + vCC + Remittance</div></div>
+  </div></div><div id="elv-pri" class="section-content"><div class="priorities-grid"><div class="priority-card">
+      <div class="priority-header"><div class="priority-num">1</div><div class="priority-title">$935M CMS MA Risk-Adjustment Accrual</div></div>
+      <div class="priority-body">The single largest urgency signal. Compliance-grade data, defensible coding, and audit-ready remittance documentation are now board-level issues requiring enterprise-wide remediation.</div>
+      <div class="optum-solution-tag">Risk Analytics + Quality Solutions + Provider Data Mgmt</div>
+    </div><div class="priority-card">
+      <div class="priority-header"><div class="priority-num">2</div><div class="priority-title">Claims Edit &amp; Payment Integrity</div></div>
+      <div class="priority-body">Benefit expense ratio 90.0% FY2025. Carelon's PI team uses AI lead identification post-pay. Optum can complement with pre-pay controls that move savings earlier in the claim lifecycle.</div>
+      <div class="optum-solution-tag">Claims Edit System + Comprehensive PI</div>
+    </div><div class="priority-card">
+      <div class="priority-header"><div class="priority-num">3</div><div class="priority-title">Provider Payment Modernization</div></div>
+      <div class="priority-body">Post-$935M accrual, remittance documentation accuracy and audit readiness are operationally critical. Provider payment disputes create downstream compliance risk in an already scrutinized environment.</div>
+      <div class="optum-solution-tag">Optum Settlement Advocate &mdash; EFT + vCC + Remittance</div>
+    </div><div class="priority-card">
+      <div class="priority-header"><div class="priority-num">4</div><div class="priority-title">Prior Auth Digital Modernization</div></div>
+      <div class="priority-body">Joined AHIP PA simplification commitment June 2025. InterQual Auth Accelerator cuts review time 56% &mdash; directly aligned to their stated public priority.</div>
+      <div class="optum-solution-tag">InterQual Auth Accelerator + Digital Auth Complete</div>
+    </div><div class="priority-card">
+      <div class="priority-header"><div class="priority-num">5</div><div class="priority-title">AI &amp; Interoperability Transformation</div></div>
+      <div class="priority-body">Lavu leads Digital Platforms and AI Office. Elevated technology adoption is a stated 2026 priority. AI-ready data foundations and interoperability directly map to his mandate.</div>
+      <div class="optum-solution-tag">Epic Payer Platform + Provider Data Management</div>
+    </div><div class="priority-card">
+      <div class="priority-header"><div class="priority-num">6</div><div class="priority-title">Pharmacy &mdash; Part D &amp; IRA Impact</div></div>
+      <div class="priority-body">IRA-driven Part D seasonality flagged as a Q4 2025 cost driver. Optum Rx transparent fee-based pharmacy model offers a differentiated affordability conversation alongside CarelonRx growth.</div>
+      <div class="optum-solution-tag">Optum Rx Transparent Pharmacy Care</div>
+    </div></div></div><div id="elv-q" class="section-content"><div class="questions-list"><div class="question-item"><div class="question-mark">?</div><div class="question-text">The $935M CMS risk-adjustment accrual is a significant number &mdash; how is that changing how you think about remittance documentation, coding governance, and audit-readiness across your MA book?</div></div><div class="question-item"><div class="question-mark">?</div><div class="question-text">With Felicia now owning all of Health Benefits in one P&L, how are you thinking about rationalizing provider payment and claims operations vendors across Medicaid, Medicare, and Commercial?</div></div><div class="question-item"><div class="question-mark">?</div><div class="question-text">Where is Carelon in building out payment integrity capabilities versus buying or partnering &mdash; and where are the gaps you're not satisfied with yet?</div></div><div class="question-item"><div class="question-mark">?</div><div class="question-text">On prior auth, you've made the public commitment &mdash; what's the hardest operational piece to actually deliver on that promise at 45 million member scale?</div></div><div class="question-item"><div class="question-mark">?</div><div class="question-text">How do you evaluate AI investments in claims and provider payment management &mdash; is that decision at the Carelon level, Health Benefits, or Ratnakar's digital office?</div></div></div></div>
+</div>
+<div id="panel-highmark" class="account-panel">
+  <div class="account-header">
+    <div class="account-header-left">
+      <div class="account-eyebrow">Tier 1 &middot; Confirmed Attending (Advisory Board)</div>
+      <div class="account-name">Highmark Health</div>
+      <div class="account-meta"><span class="meta-chip">16K employees</span><span class="meta-chip">$32.4B revenue (2025)</span><span class="meta-chip">7.1M plan members</span><span class="meta-chip">229M claims/yr</span></div>
+    </div>
+    <div class="account-header-right">
+      <div class="confidence-badge conf-confirmed">Confirmed &mdash; Advisory Board</div>
+      <div class="intent-signals"><span class="intent-num">229M</span>claims/yr</div>
+    </div>
+  </div>
+  <div class="section-tabs"><button class="section-tab active" onclick="showSection(this,'hm-why')">Overview &amp; Why Now</button><button class="section-tab" onclick="showSection(this,'hm-conn')">Connections</button><button class="section-tab" onclick="showSection(this,'hm-pay')">Payment Intelligence</button><button class="section-tab" onclick="showSection(this,'hm-pri')">Priorities &amp; Messaging</button><button class="section-tab" onclick="showSection(this,'hm-q')">Questions to Ask</button></div>
+  <div id="hm-why" class="section-content active"><div class="why-grid">
+    <div class="why-card"><div class="why-card-label">Why This Account</div><div class="why-card-text">Integrated payer-provider at $32.4B scale. 229M claims/year. Blue KC affiliation closed April 1, 2026. Recovered from $674M operating loss in 2025 to $216M operating income in Q1 2026. Recovery is real but fragile &mdash; every cost lever matters.</div></div>
+    <div class="why-card"><div class="why-card-label">Why Now</div><div class="why-card-text">Heather Cianfrocco joined as COO from UnitedHealth Group (24-year career) &mdash; 90-day window active. Blue KC integration is live. Highmark just migrated NY provider payments to ECHO Health effective Jan 26, 2026 &mdash; creating live transition friction that Settlement Advocate addresses directly.</div></div>
+  </div>
+  <div class="hypothesis-box"><div class="hypothesis-label">Messaging Hypothesis</div><div class="hypothesis-text">Optum can scale Highmark's blended payer-provider model by reducing medical and pharmacy cost trend, streamlining PA and care navigation, operationalizing Blue KC claims integration &mdash; and modernizing provider payment delivery at 229M-claim scale as they transition away from fragmented ECHO Health VCC workflows.</div></div>
+  <div style="margin-top:18px;">
+    <div style="font-size:10px;font-weight:700;letter-spacing:1.8px;text-transform:uppercase;color:var(--accent);margin-bottom:10px;">AHIP 2026 ATTENDANCE</div>
+    <div class="people-stack"><div class="attendance-card">
+  <div class="attendance-header">
+    <div class="attendance-person">
+      <div class="attendance-name">Karen Hanlon</div>
+      <div class="attendance-role">President &middot; Highmark Health</div>
+    </div>
+    <div class="attendance-status status-keynote">Keynote Speaker</div>
+  </div>
+  <div class="session-block">
+    <div class="session-title">U.S. Health Care Coverage and Its Impact on the Broader Ecosystem</div>
+    <div class="session-meta">Jun 9, 2026 &middot; 9:50 am &ndash; 10:40 am &middot; Main Keynote Stage</div>
+    <div class="session-desc">Panel examining the state of U.S. health care coverage, with industry leaders discussing affordability, access, and the structural forces reshaping how plans operate. Hanlon joins Elizabeth Fowler (Johns Hopkins), Dawn Maroney (Alignment Health), and Martha Santana-Chin (L.A. Care).</div>
+    <a href="#hm-q" class="session-cta" onclick="scrollToQ('hm-q')">&#8594; See prep questions</a>
+  </div>
+  
+</div><div class="attendance-card">
+  <div class="attendance-header">
+    <div class="attendance-person">
+      <div class="attendance-name">Mona Siddiqui, MD, MPH, MSE</div>
+      <div class="attendance-role">Chief Medical Officer &middot; Highmark Health</div>
+    </div>
+    <div class="attendance-status status-speaker">Confirmed Speaker</div>
+  </div>
+  <div class="session-block">
+    <div class="session-title">Care Anywhere: Integrating Home, Virtual, and Pharmacy Care into Plan Strategy</div>
+    <div class="session-meta">Jun 9, 2026 &middot; 11:40 am &ndash; 12:25 pm &middot; Concurrent Session Series 1</div>
+    <div class="session-desc">Panel on how health plans are integrating home-based, virtual, and pharmacy care into coherent plan strategy. Directly relevant to Highmark's Living Health model and post-acute care agenda.</div>
+    <a href="#hm-q" class="session-cta" onclick="scrollToQ('hm-q')">&#8594; See prep questions</a>
+  </div>
+  
+</div><div class="person-row">
+    <div class="person-avatar">HC</div>
+    <div class="person-body">
+      <div class="person-name">Heather Cianfrocco</div>
+      <div class="person-title">COO, Highmark Health &middot; Joined from UnitedHealth Group (24-year career)</div>
+      <div class="person-ahip">&#9679; Primary business target &mdash; not a confirmed speaker. 90-day window open. Activate via UHG alumni path. Karen Hanlon can broker the intro at the event.</div>
+    </div>
+  </div></div>
+  </div>
+</div>
+<div id="hm-conn" class="section-content"><div class="connections-list"><div class="connection-card">
+      <div class="connection-icon">&#11088;</div>
+      <div class="connection-body"><div class="connection-path">Heather Cianfrocco &mdash; UnitedHealth Group alumni (24 years)</div><div class="connection-note">Cianfrocco spent her entire career at UHG before joining Highmark. Any senior Optum or UHC executive who worked with her directly has a genuine warm path. Easiest structural connection for the COO meeting.</div></div>
+      <div class="connection-strength strength-direct">Alumni Path</div>
+    </div><div class="connection-card">
+      <div class="connection-icon">&#128279;</div>
+      <div class="connection-body"><div class="connection-path">Karen Hanlon &mdash; AHIP Advisory Board (In-Person at AHIP 2026)</div><div class="connection-note">Hanlon will be present in her Advisory Board capacity. Finance and ops background &mdash; approach on cost, scale, and operational efficiency. Controls the relationship agenda.</div></div>
+      <div class="connection-strength strength-direct">In-Person</div>
+    </div><div class="connection-card">
+      <div class="connection-icon">&#128202;</div>
+      <div class="connection-body"><div class="connection-path">Carl Daley (CFO) &mdash; Alternative path for financial recovery narrative</div><div class="connection-note">If COO meeting unavailable, CFO is a strong alternative. Payment integrity and pharmacy cost management are CFO-level conversations at 229M claim scale and post-loss recovery.</div></div>
+      <div class="connection-strength strength-indirect">Alternative</div>
+    </div></div></div><div id="hm-pay" class="section-content"><div class="payment-alert">
+    <div class="payment-alert-icon">&#x1F4B3;</div>
+    <div class="payment-alert-body"><div class="payment-alert-title">Active Payment Infrastructure Transition &mdash; Direct Entry Point</div><div class="payment-alert-text">Effective January 26, 2026, Highmark migrated NY provider payments to ECHO Health's CPR service (Payer ID 55204). Providers who had not pre-enrolled defaulted to Virtual Credit Card payments via mail or fax &mdash; creating friction and requiring manual opt-out calls to ECHO (800-890-4124). Multiple regional ECHO Payer IDs (58379 for DE/PA/WV, 55204 for NY), ASK clearinghouse still active in NY through September 2026, and now Blue KC integration adds a third payment ecosystem.</div></div>
+  </div>
+  <div class="payment-cards">
+    <div class="payment-card"><div class="payment-card-label">Current State &mdash; Fragmented</div><div class="payment-card-text">Multiple ECHO Payer IDs by region, ASK clearinghouse still active in NY, and Blue KC adding a third payment ecosystem. Providers defaulting to VCC by mail/fax. Must call ECHO manually to opt out of VCC &mdash; high abrasion, low adoption.</div><div class="optum-sa-tag">Active transition friction &mdash; provider abrasion confirmed</div></div>
+    <div class="payment-card"><div class="payment-card-label">Settlement Advocate Opportunity</div><div class="payment-card-text">Highmark is already mid-conversation about payment modernization at the provider level. Settlement Advocate's unified EFT and vCC platform with streamlined remittance is a direct replacement for the fragmented ECHO/ASK/VCC environment &mdash; especially relevant as Blue KC integration adds new provider populations who need payment system onboarding.</div><div class="optum-sa-tag">Optum Settlement Advocate &mdash; EFT + vCC + Remittance</div></div>
+  </div></div><div id="hm-pri" class="section-content"><div class="priorities-grid"><div class="priority-card">
+      <div class="priority-header"><div class="priority-num">1</div><div class="priority-title">Provider Payment Modernization &mdash; Active Need</div></div>
+      <div class="priority-body">Mid-migration from ECHO/ASK to a unified payment system. Blue KC adds new providers needing payment enrollment. Providers defaulting to VCC mail/fax creates real abrasion at 229M-claim scale.</div>
+      <div class="optum-solution-tag">Optum Settlement Advocate &mdash; EFT + vCC + Remittance</div>
+    </div><div class="priority-card">
+      <div class="priority-header"><div class="priority-num">2</div><div class="priority-title">InterQual Auth Accelerator &mdash; Active Entry Point</div></div>
+      <div class="priority-body">Highmark already partnered with Abridge for AI-powered prior auth (Aug 2025). Gold Carding program live. Optum's InterQual is the natural operationalization layer &mdash; not a cold conversation.</div>
+      <div class="optum-solution-tag">InterQual Auth Accelerator + Digital Auth Complete</div>
+    </div><div class="priority-card">
+      <div class="priority-header"><div class="priority-num">3</div><div class="priority-title">Blue KC Integration &mdash; Claims Standardization</div></div>
+      <div class="priority-body">Blue KC closed April 1, 2026. Integrating claims policies, payment integrity, and provider payment workflows across plans is the immediate COO-level operational challenge.</div>
+      <div class="optum-solution-tag">Claims Edit System + PI + Application Managed Services</div>
+    </div><div class="priority-card">
+      <div class="priority-header"><div class="priority-num">4</div><div class="priority-title">GLP-1 Cost Management</div></div>
+      <div class="priority-body">Named as a material earnings headwind in 2024. 7.1M members amplifies the budget impact. Optum Rx Weight Engage combines benefit design, UM, and behavioral coaching.</div>
+      <div class="optum-solution-tag">Optum Rx Weight Engage + GLP-1 UM Programs</div>
+    </div></div></div><div id="hm-q" class="section-content"><div class="questions-list"><div class="question-item"><div class="question-mark">?</div><div class="question-text">You moved NY provider payments to ECHO Health in January and Blue KC closed in April &mdash; how are you managing provider payment enrollment and remittance reconciliation across three different payment infrastructure environments simultaneously?</div></div><div class="question-item"><div class="question-mark">?</div><div class="question-text">Providers who hadn't pre-enrolled with ECHO defaulted to VCC by mail &mdash; how much provider abrasion is that creating, and what's your plan to consolidate onto a single payment delivery model?</div></div><div class="question-item"><div class="question-mark">?</div><div class="question-text">You partnered with Abridge for AI-powered prior auth at the point of conversation &mdash; how are you thinking about scaling that from ambient documentation capture to full authorization workflow automation?</div></div><div class="question-item"><div class="question-mark">?</div><div class="question-text">Your Social Care Network is showing $617/PMPM in savings &mdash; what's the bottleneck to scaling it further: data, community partnerships, or internal care management capacity?</div></div><div class="question-item"><div class="question-mark">?</div><div class="question-text">You processed 229 million claims last year under significant cost pressure. Where do you feel the payment accuracy leakage you haven't been able to close with your current PI setup?</div></div></div></div>
+</div>
+<div id="panel-carefirst" class="account-panel">
+  <div class="account-header">
+    <div class="account-header-left">
+      <div class="account-eyebrow">Tier 1 &middot; Confirmed Attending (Advisory Board)</div>
+      <div class="account-name">CareFirst BlueCross BlueShield</div>
+      <div class="account-meta"><span class="meta-chip">8K employees</span><span class="meta-chip">3.5M members</span><span class="meta-chip">$10.1B revenue</span><span class="meta-chip">FEP operator &mdash; DC/Baltimore</span></div>
+    </div>
+    <div class="account-header-right">
+      <div class="confidence-badge conf-confirmed">Confirmed &mdash; Advisory Board</div>
+      <div class="intent-signals"><span class="intent-num">42</span>intent signals/yr</div>
+    </div>
+  </div>
+  <div class="section-tabs"><button class="section-tab active" onclick="showSection(this,'cf-why')">Overview &amp; Why Now</button><button class="section-tab" onclick="showSection(this,'cf-conn')">Connections</button><button class="section-tab" onclick="showSection(this,'cf-pay')">Payment Intelligence</button><button class="section-tab" onclick="showSection(this,'cf-pri')">Priorities &amp; Messaging</button><button class="section-tab" onclick="showSection(this,'cf-q')">Questions to Ask</button></div>
+  <div id="cf-why" class="section-content active"><div class="why-grid">
+    <div class="why-card"><div class="why-card-label">Why This Account</div><div class="why-card-text">Largest not-for-profit health plan in the DC-Baltimore region. Federal Employee Program operator &mdash; one of the largest government health programs in the US. CEO transition creates a buying window: Ja'Ron Bridges became Interim CEO/CFO in August 2025.</div></div>
+    <div class="why-card"><div class="why-card-label">Why Now</div><div class="why-card-text">Leadership transition = strategic review window. Bridges comes from finance &mdash; affordability and total cost of care are his frame. Ricardo R. Johnson (Chief Growth Officer and Advisory Board member) is confirmed at AHIP 2026 with 42 intent signals. Active LinkedIn presence &mdash; posted 3 days ago.</div></div>
+  </div>
+  <div class="hypothesis-box"><div class="hypothesis-label">Messaging Hypothesis</div><div class="hypothesis-text">Optum can help CareFirst turn next-phase growth into lower total cost of care &mdash; through care delivery workflow modernization, pharmacy affordability, behavioral health navigation, Settlement Advocate for FEP provider payment simplification, and data-driven operations that scale across government and commercial membership.</div></div>
+  <div style="margin-top:18px;">
+    <div style="font-size:10px;font-weight:700;letter-spacing:1.8px;text-transform:uppercase;color:var(--accent);margin-bottom:10px;">AHIP 2026 ATTENDANCE</div>
+    <div class="people-stack"><div class="attendance-card">
+  <div class="attendance-header">
+    <div class="attendance-person">
+      <div class="attendance-name">Ricardo R. Johnson</div>
+      <div class="attendance-role">EVP &amp; Chief Growth Officer &middot; CareFirst BlueCross BlueShield</div>
+    </div>
+    <div class="attendance-status status-board">Advisory Board</div>
+  </div>
+  <div class="session-block" style="border-left-color:var(--ink-muted);"><div class="session-desc" style="margin:0;">Confirmed AHIP26 Advisory Board member. Also confirmed speaker at AHIP's separate MMDC26 Forum on Medicaid and Medicare topics. 42 intent signals in the last year. Posted on LinkedIn 3 days ago. Advisory Board role means present for the full event &mdash; highest-probability floor encounter of all CareFirst contacts.</div></div>
+  <div class="attendance-note">42 intent signals and recent LinkedIn activity make him the highest-engagement CareFirst contact. Advisory Board members attend pre-event dinners and networking sessions throughout the two days.</div>
+</div><div class="attendance-card">
+  <div class="attendance-header">
+    <div class="attendance-person">
+      <div class="attendance-name">Laura Herrera Scott, MD, MPH</div>
+      <div class="attendance-role">CMO &middot; CareFirst BlueCross BlueShield</div>
+    </div>
+    <div class="attendance-status status-speaker">Confirmed Speaker</div>
+  </div>
+  <div class="session-block">
+    <div class="session-title">Care Anywhere: Integrating Home, Virtual, and Pharmacy Care into Plan Strategy</div>
+    <div class="session-meta">Jun 9, 2026 &middot; 11:40 am &ndash; 12:25 pm &middot; Concurrent Session Series 1</div>
+    <div class="session-desc">Panel on integrating home-based, virtual, and pharmacy care into plan strategy. Herrera Scott's clinical frame maps directly to CareFirst's CloseKnit virtual primary care agenda and care delivery/payment operations.</div>
+    <a href="#cf-q" class="session-cta" onclick="scrollToQ('cf-q')">&#8594; See prep questions</a>
+  </div>
+  <div class="attendance-note">Natural post-session entry point &mdash; introduce after her session and bridge to the broader operational and payment conversation for Bridges and Johnson.</div>
+</div><div class="person-row">
+    <div class="person-avatar">JB</div>
+    <div class="person-body">
+      <div class="person-name">Ja'Ron Bridges</div>
+      <div class="person-title">Interim President &amp; CEO / CFO &middot; CareFirst</div>
+      <div class="person-ahip">&#9679; Decision maker &mdash; not a confirmed speaker. Finance background. Use Johnson or Herrera Scott as the warm intro path.</div>
+    </div>
+  </div></div>
+  </div>
+</div>
+<div id="cf-conn" class="section-content"><div class="connections-list"><div class="connection-card">
+      <div class="connection-icon">&#11088;</div>
+      <div class="connection-body"><div class="connection-path">Serrah Linares (Chief Outcomes Officer, Vieu) &rarr; Ricardo R. Johnson</div><div class="connection-note">Vieu's own network has a confirmed connection path to Johnson. 0 direct / 4 indirect Optum paths. This Vieu-native path is the cleanest activation route &mdash; use it to establish the introduction before or at AHIP.</div></div>
+      <div class="connection-strength strength-warm">Vieu Path</div>
+    </div><div class="connection-card">
+      <div class="connection-icon">&#128279;</div>
+      <div class="connection-body"><div class="connection-path">Optum teammate with Highmark Health or Gateway Health history &rarr; Ja'Ron Bridges</div><div class="connection-note">Bridges came up through health plan finance. Highmark and Gateway (now Highmark Wholecare) have organizational history with CareFirst in the mid-Atlantic market.</div></div>
+      <div class="connection-strength strength-warm">Warm</div>
+    </div><div class="connection-card">
+      <div class="connection-icon">&#128202;</div>
+      <div class="connection-body"><div class="connection-path">AHIP Advisory Board &mdash; Ricardo Johnson confirmed in person</div><div class="connection-note">42 intent signals. Posted on LinkedIn 3 days ago. High engagement signal. Floor meeting or arranged introduction is viable and timely.</div></div>
+      <div class="connection-strength strength-direct">In-Person</div>
+    </div></div></div><div id="cf-pay" class="section-content"><div class="payment-alert">
+    <div class="payment-alert-icon">&#x1F4B3;</div>
+    <div class="payment-alert-body"><div class="payment-alert-title">Payment Infrastructure Signal</div><div class="payment-alert-text">CareFirst uses standard EFT/ERA via clearinghouse. Their EFT enrollment requires providers to coordinate CCD+ data elements with their financial institution for ERA reassociation &mdash; a manual, multi-step process. For the Federal Employee Program, payment accuracy and remittance auditability are held to government program standards. Bridges' finance background means provider payment economics and cash flow predictability are within his frame of reference.</div></div>
+  </div>
+  <div class="payment-cards">
+    <div class="payment-card"><div class="payment-card-label">Current State</div><div class="payment-card-text">EFT/ERA enrollment requires providers to contact their financial institution separately to arrange CCD+ delivery &mdash; adding friction to onboarding. ERA delivered via clearinghouse. FEP program requires heightened payment accuracy standards and audit-trail documentation at government scale.</div><div class="optum-sa-tag">FEP compliance requirements create remittance precision pressure</div></div>
+    <div class="payment-card"><div class="payment-card-label">Settlement Advocate Opportunity</div><div class="payment-card-text">CareFirst's FEP book operates under strict government remittance standards. Settlement Advocate's streamlined EFT and vCC model simplifies provider onboarding, improves payment accuracy documentation, and reduces the provider-side friction that creates unnecessary support calls &mdash; directly supporting Bridges' affordability and operational efficiency agenda.</div><div class="optum-sa-tag">Optum Settlement Advocate &mdash; EFT + vCC + FEP-grade Remittance</div></div>
+  </div></div><div id="cf-pri" class="section-content"><div class="priorities-grid"><div class="priority-card">
+      <div class="priority-header"><div class="priority-num">1</div><div class="priority-title">FEP Operations &mdash; Payment &amp; Remittance Precision</div></div>
+      <div class="priority-body">CareFirst operates one of the largest FEP books. Government program standards require payment accuracy documentation and audit-trail capability. Provider payment friction creates compliance risk.</div>
+      <div class="optum-solution-tag">Settlement Advocate + Claims Edit System + Comprehensive PI</div>
+    </div><div class="priority-card">
+      <div class="priority-header"><div class="priority-num">2</div><div class="priority-title">CEO Transition &mdash; Affordability Frame</div></div>
+      <div class="priority-body">Bridges comes from finance. CloseKnit expansion is active. Position Optum as the operational layer that makes investments more cost-effective and measurable.</div>
+      <div class="optum-solution-tag">Performance Analytics + Care Coordination Platform</div>
+    </div><div class="priority-card">
+      <div class="priority-header"><div class="priority-num">3</div><div class="priority-title">Prior Auth Simplification</div></div>
+      <div class="priority-body">CareFirst committed to PA simplification in the AHIP collective agreement. Johnson's Growth Officer role means PA friction is a growth and retention risk, not just a cost issue.</div>
+      <div class="optum-solution-tag">InterQual Auth Accelerator + Prior Auth API</div>
+    </div><div class="priority-card">
+      <div class="priority-header"><div class="priority-num">4</div><div class="priority-title">AI Governance &amp; Digital Operations</div></div>
+      <div class="priority-body">AI governance is a stated 2026 CareFirst priority driven from a financial risk management frame. Responsible AI in claims and utilization management is the conversation.</div>
+      <div class="optum-solution-tag">InterQual Criteria (evidence-based AI oversight) + Optum Analytics</div>
+    </div></div></div><div id="cf-q" class="section-content"><div class="questions-list"><div class="question-item"><div class="question-mark">?</div><div class="question-text">FEP is one of the most complex government health programs to operate &mdash; where are the biggest provider payment and remittance friction points, and how are those showing up in your operations cost base?</div></div><div class="question-item"><div class="question-mark">?</div><div class="question-text">With Ja'Ron stepping into the CEO role from CFO, how is the strategic agenda shifting &mdash; is affordability and operational cost discipline becoming the primary frame over growth?</div></div><div class="question-item"><div class="question-mark">?</div><div class="question-text">CloseKnit is your virtual primary care play &mdash; how are you closing the loop between virtual care encounters and downstream claims management and payment accuracy?</div></div><div class="question-item"><div class="question-mark">?</div><div class="question-text">On AI governance &mdash; are you defining responsible AI primarily as a regulatory compliance question, or also as what it looks like specifically in utilization management and prior auth workflows?</div></div><div class="question-item"><div class="question-mark">?</div><div class="question-text">You're the Growth Officer &mdash; where's the member or provider experience gap creating the most retention or acquisition friction right now?</div></div></div></div>
+</div>
+<div id="panel-cambia" class="account-panel">
+  <div class="account-header">
+    <div class="account-header-left">
+      <div class="account-eyebrow">Tier 1 &middot; Confirmed Attending (Advisory Board)</div>
+      <div class="account-name">Cambia Health Solutions</div>
+      <div class="account-meta"><span class="meta-chip">4.5K employees</span><span class="meta-chip">4M members, 5 states</span><span class="meta-chip">7 health plan brands</span><span class="meta-chip">BCBSND live Feb 2026</span></div>
+    </div>
+    <div class="account-header-right">
+      <div class="confidence-badge conf-confirmed">Confirmed &mdash; Advisory Board</div>
+      <div class="intent-signals"><span class="intent-num">1,398</span>PI signals tracked</div>
+    </div>
+  </div>
+  <div class="section-tabs"><button class="section-tab active" onclick="showSection(this,'cam-why')">Overview &amp; Why Now</button><button class="section-tab" onclick="showSection(this,'cam-conn')">Connections</button><button class="section-tab" onclick="showSection(this,'cam-pay')">Payment Intelligence</button><button class="section-tab" onclick="showSection(this,'cam-pri')">Priorities &amp; Messaging</button><button class="section-tab" onclick="showSection(this,'cam-q')">Questions to Ask</button></div>
+  <div id="cam-why" class="section-content active"><div class="why-grid">
+    <div class="why-card"><div class="why-card-label">Why This Account</div><div class="why-card-text">Regional Blues platform on expansion trajectory &mdash; BCBSND live February 1, 2026; Arkansas BCBS closing 2026. Multi-state complexity creating immediate pressure on claims standardization, PA workflows, and provider data governance. Technographic signals: 1,398 payment integrity/payer ops tracked.</div></div>
+    <div class="why-card"><div class="why-card-label">Why Now</div><div class="why-card-text">CMS ePA mandate arrives January 1, 2027 &mdash; 7 months away. Cambia needs readiness across all affiliated plans. BCBSND integration is live and creating workflow standardization urgency right now. Laurent Rotival (CIO) is the target &mdash; GE Healthcare background gives Optum alumni a clear warm path.</div></div>
+  </div>
+  <div class="hypothesis-box"><div class="hypothesis-label">Messaging Hypothesis</div><div class="hypothesis-text">Optum can standardize PA, clinical, and member/provider workflows across Cambia's expanding multi-state footprint &mdash; with InterQual Auth Accelerator as the immediate entry point (CMS ePA Jan 2027), Claims Edit System as the operational foundation for multi-plan affordability, and Settlement Advocate to unify provider payment delivery across 7 plan brands.</div></div>
+  <div style="margin-top:18px;">
+    <div style="font-size:10px;font-weight:700;letter-spacing:1.8px;text-transform:uppercase;color:var(--accent);margin-bottom:10px;">AHIP 2026 ATTENDANCE</div>
+    <div class="people-stack"><div class="attendance-card">
+  <div class="attendance-header">
+    <div class="attendance-person">
+      <div class="attendance-name">Jared Short</div>
+      <div class="attendance-role">President &amp; CEO &middot; Cambia Health Solutions</div>
+    </div>
+    <div class="attendance-status status-board">Advisory Board</div>
+  </div>
+  <div class="session-block" style="border-left-color:var(--ink-muted);"><div class="session-desc" style="margin:0;">Confirmed AHIP26 Advisory Board member. Not listed as a session speaker but present for the full event. CEO-level conversation &mdash; frame around consumer experience, multi-state affordability, and Cambia's next growth phase. Best engaged at advisory board reception or networking sessions.</div></div>
+  
+</div><div class="attendance-card">
+  <div class="attendance-header">
+    <div class="attendance-person">
+      <div class="attendance-name">Danielle Henderson</div>
+      <div class="attendance-role">Director of Digital Products &middot; Cambia Health Solutions</div>
+    </div>
+    <div class="attendance-status status-speaker">Confirmed Speaker</div>
+  </div>
+  <div class="session-block">
+    <div class="session-title">Leveraging AI to Improve CX and Enable Self Service</div>
+    <div class="session-meta">Jun 9, 2026 &middot; 11:40 am &ndash; 12:25 pm &middot; Concurrent Session Series 1 &middot; AI Use Cases, Analytics &amp; Interoperability</div>
+    <div class="session-desc">Panel on how health plans are using AI to improve member and provider experience and enable self-service capabilities. Directly relevant to Cambia's digital transformation and multi-plan standardization agenda.</div>
+    <a href="#cam-q" class="session-cta" onclick="scrollToQ('cam-q')">&#8594; See prep questions</a>
+  </div>
+  <div class="attendance-note">Most direct Cambia entry point at AHIP26. Post-session introduction bridges naturally to the CIO conversation with Rotival on CMS ePA readiness.</div>
+</div><div class="attendance-card">
+  <div class="attendance-header">
+    <div class="attendance-person">
+      <div class="attendance-name">Zak Ramadan-Jradi, MD, MBA</div>
+      <div class="attendance-role">Medical Director &middot; Cambia Health Solutions</div>
+    </div>
+    <div class="attendance-status status-speaker">Confirmed Speaker</div>
+  </div>
+  <div class="session-block">
+    <div class="session-title">Value-Based Innovation to Drive Outcomes</div>
+    <div class="session-meta">Jun 9, 2026 &middot; 11:40 am &ndash; 12:25 pm &middot; Peer Connect Roundtable</div>
+    <div class="session-desc">Peer connect roundtable on value-based care innovation and outcomes. Cambia's VBC agenda, interoperability investment, and provider collaboration are the conversation context.</div>
+    <a href="#cam-q" class="session-cta" onclick="scrollToQ('cam-q')">&#8594; See prep questions</a>
+  </div>
+  
+</div></div>
+  </div>
+</div>
+<div id="cam-conn" class="section-content"><div class="connections-list"><div class="connection-card">
+      <div class="connection-icon">&#128279;</div>
+      <div class="connection-body"><div class="connection-path">GE Healthcare-connected Optum leader &rarr; Laurent Rotival (CIO)</div><div class="connection-note">Rotival's background runs through GE Healthcare. Any Optum executive with active GE Healthcare career history has a direct warm path to the CIO. Cross-check internal Optum network specifically for this.</div></div>
+      <div class="connection-strength strength-warm">Warm</div>
+    </div><div class="connection-card">
+      <div class="connection-icon">&#128279;</div>
+      <div class="connection-body"><div class="connection-path">Optum/CMS ePA-adjacent executive &rarr; Laurent Rotival</div><div class="connection-note">CMS ePA mandate creates a natural shared-urgency intro angle. Any Optum exec who has presented on CMS-0057 compliance at industry events has a credible reason to reach out to Rotival now.</div></div>
+      <div class="connection-strength strength-warm">Warm</div>
+    </div><div class="connection-card">
+      <div class="connection-icon">&#128202;</div>
+      <div class="connection-body"><div class="connection-path">Jared Short &mdash; AHIP Advisory Board (In-Person)</div><div class="connection-note">Short is confirmed at AHIP 2026. CEO-level conversation &mdash; frame around consumer experience, multi-state affordability, and Cambia's next growth phase. The PA/claims/payment conversation is for Rotival.</div></div>
+      <div class="connection-strength strength-direct">In-Person</div>
+    </div></div></div><div id="cam-pay" class="section-content"><div class="payment-alert">
+    <div class="payment-alert-icon">&#x1F4B3;</div>
+    <div class="payment-alert-body"><div class="payment-alert-title">Payment Infrastructure Signal &mdash; Multi-Plan Fragmentation Risk</div><div class="payment-alert-text">Cambia's rapid affiliation strategy (BCBSND Feb 2026, Arkansas BCBS closing 2026) is expanding the number of distinct provider payment workflows, payer IDs, and remittance systems that must operate consistently. Each affiliated plan brings its own payment enrollment history and clearinghouse relationships. Cambia's explicit goal of using shared technology and operations to deliver cost savings means provider payment standardization is on the integration agenda.</div></div>
+  </div>
+  <div class="payment-cards">
+    <div class="payment-card"><div class="payment-card-label">Current State</div><div class="payment-card-text">Cambia operates 7 plan brands across 5 states, each with distinct EFT/ERA enrollment, payer IDs, and provider portals. BCBSND and Arkansas BCBS affiliations add new provider populations with their own payment infrastructure histories. Achieving the &ldquo;simpler and more affordable&rdquo; experience Cambia promises requires payment consistency that fragmented multi-clearinghouse environments cannot deliver.</div><div class="optum-sa-tag">7 plan brands = 7 provider payment environments to standardize</div></div>
+    <div class="payment-card"><div class="payment-card-label">Settlement Advocate Opportunity</div><div class="payment-card-text">As Cambia integrates BCBSND and prepares for Arkansas BCBS, a unified provider payment and remittance layer is exactly the shared operational infrastructure their affiliation strategy is designed to build. Settlement Advocate's flexible EFT and vCC model provides the standardized payment delivery platform Cambia can roll out consistently across affiliated plans &mdash; reducing provider abrasion and matching their affordability brand promise.</div><div class="optum-sa-tag">Optum Settlement Advocate &mdash; Unified EFT + vCC across 7 brands</div></div>
+  </div></div><div id="cam-pri" class="section-content"><div class="priorities-grid"><div class="priority-card">
+      <div class="priority-header"><div class="priority-num">1</div><div class="priority-title">CMS ePA Mandate &mdash; Jan 1, 2027</div></div>
+      <div class="priority-body">7 months away. Cambia must operationalize electronic prior auth across all affiliated plans simultaneously. InterQual reduced review time 56%. FHIR APIs support CMS-0057 PARDD readiness directly.</div>
+      <div class="optum-solution-tag">InterQual Auth Accelerator + Prior Auth API + FHIR APIs</div>
+    </div><div class="priority-card">
+      <div class="priority-header"><div class="priority-num">2</div><div class="priority-title">Multi-Plan Provider Payment Standardization</div></div>
+      <div class="priority-body">BCBSND live Feb 2026, Arkansas BCBS closing 2026. Two new plan populations with distinct payment histories need a consistent EFT/ERA enrollment experience. 1,398 PI signals confirm active operational focus.</div>
+      <div class="optum-solution-tag">Optum Settlement Advocate &mdash; Unified EFT + vCC + Remittance</div>
+    </div><div class="priority-card">
+      <div class="priority-header"><div class="priority-num">3</div><div class="priority-title">Multi-Plan Claims Standardization</div></div>
+      <div class="priority-body">Claims policy, editing rules, and payment accuracy need to standardize across 5 states rapidly. Affordability is Cambia's core brand promise and 1,398 payment integrity signals are tracked.</div>
+      <div class="optum-solution-tag">Claims Edit System + Application Managed Services + PI Assessment</div>
+    </div><div class="priority-card">
+      <div class="priority-header"><div class="priority-num">4</div><div class="priority-title">Pharmacy Transparency &amp; Affordability</div></div>
+      <div class="priority-body">Cambia's brand promise centers on affordability and simpler navigation. Optum Rx transparent fee-based pharmacy care model launched May 2026 &mdash; directly aligned to Cambia's messaging.</div>
+      <div class="optum-solution-tag">Optum Rx Transparent Pharmacy Care + PreCheck Prior Auth</div>
+    </div></div></div><div id="cam-q" class="section-content"><div class="questions-list"><div class="question-item"><div class="question-mark">?</div><div class="question-text">BCBSND went live February 1st and Arkansas BCBS is closing this year &mdash; how are you standardizing provider payment enrollment and remittance delivery across the new affiliated plans, and what's the operational friction you're hitting?</div></div><div class="question-item"><div class="question-mark">?</div><div class="question-text">CMS ePA is January 1, 2027 &mdash; are you building readiness for that across all seven plan brands simultaneously, or sequencing it? Where are you in that build?</div></div><div class="question-item"><div class="question-mark">?</div><div class="question-text">Your shared technology and operations commitment is the value proposition of the affiliation model &mdash; which operational layer are you most confident you can standardize quickly, and where are you still figuring it out?</div></div><div class="question-item"><div class="question-mark">?</div><div class="question-text">Pharmacy affordability is core to your brand promise &mdash; how are you thinking about the move toward transparent, fee-based PBM models, and is that a near-term decision?</div></div><div class="question-item"><div class="question-mark">?</div><div class="question-text">You've done strong Da Vinci Project interoperability work &mdash; are those clinical data flows actually changing how your medical management teams make decisions, or is it still primarily a compliance infrastructure build?</div></div></div></div>
+</div>
+<div id="panel-kaiser" class="account-panel">
+  <div class="account-header">
+    <div class="account-header-left">
+      <div class="account-eyebrow">Tier 1 &middot; Confirmed Keynote Speaker AHIP 2026</div>
+      <div class="account-name">Kaiser Permanente</div>
+      <div class="account-meta"><span class="meta-chip">137K employees</span><span class="meta-chip">12.5M+ members</span><span class="meta-chip">Integrated payer-provider</span><span class="meta-chip">$55.6M FCA settlement Jan 2026</span></div>
+    </div>
+    <div class="account-header-right">
+      <div class="confidence-badge conf-confirmed">Confirmed &mdash; Keynote Speaker</div>
+      <div class="intent-signals"><span class="intent-num">107</span>intent signals/yr</div>
+    </div>
+  </div>
+  <div class="section-tabs"><button class="section-tab active" onclick="showSection(this,'kp-why')">Overview &amp; Why Now</button><button class="section-tab" onclick="showSection(this,'kp-conn')">Connections</button><button class="section-tab" onclick="showSection(this,'kp-pay')">Payment Intelligence</button><button class="section-tab" onclick="showSection(this,'kp-pri')">Priorities &amp; Messaging</button><button class="section-tab" onclick="showSection(this,'kp-q')">Questions to Ask</button></div>
+  <div id="kp-why" class="section-content active"><div class="why-grid">
+    <div class="why-card"><div class="why-card-label">Why This Account</div><div class="why-card-text">Largest integrated payer-provider in the US. 107 intent signals &mdash; highest of all eight accounts. $55.6M False Claims Act settlement January 2026 (DOJ, MA risk adjustment). Behavioral health under CA DMHC corrective action and DOL settlement. Both are live compliance obligations driving structural operational change.</div></div>
+    <div class="why-card"><div class="why-card-label">Why Now</div><div class="why-card-text">Choucair is a confirmed keynote at AHIP 2026 &mdash; in-person engagement is guaranteed. The FCA settlement creates immediate urgency for coding integrity, claims accuracy, and payment governance. DOL behavioral health settlement requires demonstrable access improvement measured quarterly by regulators.</div></div>
+  </div>
+  <div class="hypothesis-box"><div class="hypothesis-label">Messaging Hypothesis</div><div class="hypothesis-text">Optum can help Kaiser reduce compliance risk and accelerate operational performance &mdash; through claims edit and coding governance post-FCA settlement, behavioral health access expansion post-DOL settlement, Settlement Advocate for external provider payment modernization, and SDOH analytics that scale Kaiser's equity commitments into measurable outcomes.</div></div>
+  <div style="margin-top:18px;">
+    <div style="font-size:10px;font-weight:700;letter-spacing:1.8px;text-transform:uppercase;color:var(--accent);margin-bottom:10px;">AHIP 2026 ATTENDANCE</div>
+    <div class="people-stack"><div class="attendance-card">
+  <div class="attendance-header">
+    <div class="attendance-person">
+      <div class="attendance-name">Bechara Choucair, MD</div>
+      <div class="attendance-role">EVP &amp; Chief Health Officer &middot; Kaiser Permanente</div>
+    </div>
+    <div class="attendance-status status-speaker">Confirmed Speaker</div>
+  </div>
+  <div class="session-block" style="border-left-color:var(--ink-muted);"><div class="session-desc" style="margin:0;">Confirmed on AHIP26 speaker roster. Specific session not yet published on the public agenda as of June 5, 2026 &mdash; likely a featured or keynote-adjacent session given his seniority. 107 intent signals &mdash; highest of all eight accounts in this guide. Monitor the agenda for session confirmation closer to the event.</div></div>
+  <div class="attendance-note">With 107 intent signals and AHIP26 speaker confirmation, Choucair is the highest-engagement target in the entire guide. Activate the Daniel Kueter &rarr; Brandon Cuevas two-hop path now to secure a pre-arranged meeting rather than relying on a floor introduction.</div>
+</div></div>
+  </div>
+</div>
+<div id="kp-conn" class="section-content"><div class="connections-list"><div class="connection-card">
+      <div class="connection-icon">&#128279;</div>
+      <div class="connection-body"><div class="connection-path">Daniel Kueter (CEO, UHC Commercial) &rarr; Brandon Cuevas (Chief Growth Officer) &rarr; Bechara Choucair</div><div class="connection-note">Vieu's path analysis identifies this as the strongest warm route to Choucair. Two-hop path through active UHC executive leadership. Requires internal coordination &mdash; reach out to Kueter or Cuevas to broker the introduction before the event.</div></div>
+      <div class="connection-strength strength-warm">2-Hop Warm</div>
+    </div><div class="connection-card">
+      <div class="connection-icon">&#128202;</div>
+      <div class="connection-body"><div class="connection-path">AHIP 2026 Keynote &mdash; Choucair confirmed on stage</div><div class="connection-note">107 intent signals is the highest of all accounts. He will be at the event. Post-keynote engagement or a pre-arranged meeting are both viable. Open on claims edit governance post-FCA settlement as the sharpest opener.</div></div>
+      <div class="connection-strength strength-direct">In-Person</div>
+    </div></div></div><div id="kp-pay" class="section-content"><div class="payment-alert">
+    <div class="payment-alert-icon">&#x1F4B3;</div>
+    <div class="payment-alert-body"><div class="payment-alert-title">Payment Infrastructure Signal &mdash; FCA Settlement Creates Governance Urgency</div><div class="payment-alert-text">The $55.6M DOJ FCA settlement in January 2026 tied to MA risk adjustment submissions creates direct urgency for audit-grade payment documentation and coding governance. In an integrated payer-provider model, the payment-to-remittance chain is internal &mdash; meaning errors at the coding and claims level directly translate into compliance exposure at the plan level. Any post-settlement environment requires tighter pre-pay controls and auditability.</div></div>
+  </div>
+  <div class="payment-cards">
+    <div class="payment-card"><div class="payment-card-label">Current State</div><div class="payment-card-text">Kaiser's integrated model means provider payments flow internally between the health plan and its own medical groups &mdash; reducing some external payment friction but creating unique challenges: internal transfer pricing accuracy, coding consistency across a massive employed physician base, and audit-grade documentation requirements following the FCA settlement.</div><div class="optum-sa-tag">FCA settlement = coding and remittance auditability is board-level</div></div>
+    <div class="payment-card"><div class="payment-card-label">Settlement Advocate Opportunity</div><div class="payment-card-text">For Kaiser's external provider relationships (referral networks, specialty partners, behavioral health providers added post-DOL settlement), Settlement Advocate's streamlined EFT and vCC model reduces administrative friction that deters external providers from joining networks &mdash; directly supporting the behavioral health access expansion Kaiser is legally obligated to deliver.</div><div class="optum-sa-tag">Optum Settlement Advocate &mdash; External Network EFT + Remittance Compliance</div></div>
+  </div></div><div id="kp-pri" class="section-content"><div class="priorities-grid"><div class="priority-card">
+      <div class="priority-header"><div class="priority-num">1</div><div class="priority-title">Claims Edit &amp; Coding Governance &mdash; Post-FCA</div></div>
+      <div class="priority-body">$55.6M DOJ settlement January 2026. Post-settlement environment raises the bar for auditability, defensible coding practices, and pre-pay controls at every level &mdash; including internal plan-to-group transfers.</div>
+      <div class="optum-solution-tag">Claims Edit System + Coding Advisor + Payment Integrity Analytics</div>
+    </div><div class="priority-card">
+      <div class="priority-header"><div class="priority-num">2</div><div class="priority-title">Behavioral Health Access &mdash; Active Regulatory Obligation</div></div>
+      <div class="priority-body">CA DMHC quarterly corrective action reporting. DOL settlement requires reduced wait times and reformed care review. Expanding external behavioral health provider networks directly supports compliance.</div>
+      <div class="optum-solution-tag">Optum Behavioral Health + AbleTo + Virtual Care</div>
+    </div><div class="priority-card">
+      <div class="priority-header"><div class="priority-num">3</div><div class="priority-title">Provider Payment for External Networks</div></div>
+      <div class="priority-body">Kaiser must expand external provider relationships to meet behavioral health access obligations. Payment friction deters external provider enrollment. Settlement Advocate simplifies payment onboarding for new network additions.</div>
+      <div class="optum-solution-tag">Optum Settlement Advocate &mdash; EFT + vCC for network expansion</div>
+    </div><div class="priority-card">
+      <div class="priority-header"><div class="priority-num">4</div><div class="priority-title">SDOH Analytics at 12.5M Member Scale</div></div>
+      <div class="priority-body">Kaiser's 2024 Annual Report: &ldquo;health equity guides everything we do.&rdquo; The challenge is turning social risk signals into prioritized, measurable care management interventions at 12.5M member scale.</div>
+      <div class="optum-solution-tag">SDOH Analytics + Predictive Prioritization + Care Coordination</div>
+    </div><div class="priority-card">
+      <div class="priority-header"><div class="priority-num">5</div><div class="priority-title">Performance Analytics &mdash; Affordability &amp; Growth</div></div>
+      <div class="priority-body">Permanente Medicine 2025: advancing growth while reducing costs and maintaining affordability. Leaders need sharper visibility into utilization, quality, and cost drivers.</div>
+      <div class="optum-solution-tag">Optum Performance Analytics + Population Health Insights</div>
+    </div></div></div><div id="kp-q" class="section-content"><div class="questions-list"><div class="question-item"><div class="question-mark">?</div><div class="question-text">The $55.6M FCA settlement was specifically about MA risk adjustment coding &mdash; how is that changing your approach to coding governance and audit-readiness across your entire claims and remittance chain?</div></div><div class="question-item"><div class="question-mark">?</div><div class="question-text">You're reporting quarterly progress to CA DMHC on behavioral health access &mdash; what's the hardest part of the corrective action plan to operationalize, and how much are you relying on external provider network expansion to get there?</div></div><div class="question-item"><div class="question-mark">?</div><div class="question-text">As you add external behavioral health providers to meet access obligations, how are you simplifying the payment and remittance enrollment experience so that providers actually want to join your network?</div></div><div class="question-item"><div class="question-mark">?</div><div class="question-text">You have arguably the richest clinical data set in the country &mdash; what's preventing you from turning your SDOH signals into consistent, scalable care management interventions at 12.5M member scale?</div></div><div class="question-item"><div class="question-mark">?</div><div class="question-text">Your integrated model is both your biggest strength and your biggest complexity &mdash; where does the plan-delivery-pharmacy coordination break down in ways that are still costing you avoidable utilization?</div></div></div></div>
+</div>
+<div id="panel-hcsc" class="account-panel">
+  <div class="account-header">
+    <div class="account-header-left">
+      <div class="account-eyebrow">Tier 2 &middot; High Probability Attending</div>
+      <div class="account-name">Health Care Service Corporation (HCSC)</div>
+      <div class="account-meta"><span class="meta-chip">35K+ employees</span><span class="meta-chip">$88B revenue (2025)</span><span class="meta-chip">27M members</span><span class="meta-chip">33 states via HealthSpring</span></div>
+    </div>
+    <div class="account-header-right">
+      <div class="confidence-badge conf-likely">High Probability</div>
+      <div class="intent-signals"><span class="intent-num">$88B</span>revenue scale</div>
+    </div>
+  </div>
+  <div class="section-tabs"><button class="section-tab active" onclick="showSection(this,'hcsc-why')">Overview &amp; Why Now</button><button class="section-tab" onclick="showSection(this,'hcsc-conn')">Connections</button><button class="section-tab" onclick="showSection(this,'hcsc-pay')">Payment Intelligence</button><button class="section-tab" onclick="showSection(this,'hcsc-pri')">Priorities &amp; Messaging</button><button class="section-tab" onclick="showSection(this,'hcsc-q')">Questions to Ask</button></div>
+  <div id="hcsc-why" class="section-content active"><div class="why-grid">
+    <div class="why-card"><div class="why-card-label">Why This Account</div><div class="why-card-text">Largest mutual health insurer in the US. $88B revenue. 27M members across 5 core states plus 33 states via the 2025 HealthSpring acquisition from Cigna. Maurice Smith chairs Prime Therapeutics &mdash; a $30B pharmacy subsidiary. HCSC uses Availity for EFT/ERA across BCBS state plans.</div></div>
+    <div class="why-card"><div class="why-card-label">Why Now</div><div class="why-card-text">HealthSpring acquisition in 2025 instantly expanded HCSC from 5 to 33 states, adding Medicare Advantage scale that requires new operational infrastructure. Claims integration, payment standardization, and care management across a dramatically larger member base are all live priorities. Joshua D. Goldberg (HCSC) confirmed speaker at AHIP MMDC26 Forum on DSNP operations.</div></div>
+  </div>
+  <div class="hypothesis-box"><div class="hypothesis-label">Messaging Hypothesis</div><div class="hypothesis-text">Optum can help HCSC operationalize its HealthSpring integration &mdash; standardizing claims accuracy, payment integrity, and care management across 27 million members and 33 states &mdash; while using Settlement Advocate to unify provider payment delivery across a newly enlarged national network of Medicaid, Commercial, and Medicare Advantage providers.</div></div>
+  <div style="margin-top:18px;">
+    <div style="font-size:10px;font-weight:700;letter-spacing:1.8px;text-transform:uppercase;color:var(--accent);margin-bottom:10px;">AHIP 2026 ATTENDANCE</div>
+    <div class="people-stack"><div class="person-row">
+    <div class="person-avatar">MS</div>
+    <div class="person-body">
+      <div class="person-name">Maurice Smith</div>
+      <div class="person-title">Chairman, President &amp; CEO &middot; HCSC</div>
+      <div class="person-ahip">&#9679; Not a confirmed speaker at AHIP26. Likely attending given consistent AHIP presence and Modern Healthcare Top 100 profile. Approach at networking sessions &mdash; HealthSpring integration and Prime Therapeutics are the openers.</div>
+    </div>
+  </div><div class="attendance-card">
+  <div class="attendance-header">
+    <div class="attendance-person">
+      <div class="attendance-name">Joshua D. Goldberg</div>
+      <div class="attendance-role">Executive Director, Health Policy &middot; HCSC</div>
+    </div>
+    <div class="attendance-status status-speaker">Confirmed Speaker &mdash; MMDC26</div>
+  </div>
+  <div class="session-block">
+    <div class="session-title">DSNP Operations and Long-Term Sustainability</div>
+    <div class="session-meta">AHIP MMDC26 Forum (separate AHIP event) &middot; Health Care Service Corporation</div>
+    <div class="session-desc">Panel on how health plans advance affordability while maintaining access and quality in DSNP programs, with practical strategies on long-term sustainability and the role managed care plays in stabilizing government-program coverage.</div>
+    <a href="#hcsc-q" class="session-cta" onclick="scrollToQ('hcsc-q')">&#8594; See prep questions</a>
+  </div>
+  <div class="attendance-note">Goldberg is confirmed at the MMDC26 Forum, not AHIP26 itself. Use him as a warm intro path to Smith if direct executive access proves difficult.</div>
+</div></div>
+  </div>
+</div>
+<div id="hcsc-conn" class="section-content"><div class="connections-list"><div class="connection-card">
+      <div class="connection-icon">&#128279;</div>
+      <div class="connection-body"><div class="connection-path">Prime Therapeutics overlap &mdash; HCSC-Optum pharmacy adjacency</div><div class="connection-note">Smith chairs Prime Therapeutics, a $30B pharmacy solutions organization partially owned by HCSC. Any Optum Rx relationship or competitive intelligence on Prime creates a natural conversation entry point around pharmacy strategy and PBM economics.</div></div>
+      <div class="connection-strength strength-warm">Strategic Overlap</div>
+    </div><div class="connection-card">
+      <div class="connection-icon">&#128202;</div>
+      <div class="connection-body"><div class="connection-path">HCSC confirmed at AHIP MMDC26 Forum &mdash; Joshua D. Goldberg, Health Policy Director</div><div class="connection-note">Goldberg confirmed as speaker on DSNP topics. Maurice Smith is a consistent AHIP presence given his industry profile and Modern Healthcare recognition.</div></div>
+      <div class="connection-strength strength-warm">In-Person</div>
+    </div></div></div><div id="hcsc-pay" class="section-content"><div class="payment-alert">
+    <div class="payment-alert-icon">&#x1F4B3;</div>
+    <div class="payment-alert-body"><div class="payment-alert-title">Payment Infrastructure Signal &mdash; Post-HealthSpring Integration Complexity</div><div class="payment-alert-text">HCSC operates Availity-based EFT/ERA enrollment for BCBS Texas and affiliated state plans. The 2025 HealthSpring acquisition from Cigna brought a national Medicare Advantage provider network with its own payment infrastructure &mdash; likely using different clearinghouses and enrollment processes. Integrating payment operations across a 5-state Blues base and a 33-state national MA platform is an active enterprise challenge that Smith's finance-rooted leadership will want to resolve efficiently.</div></div>
+  </div>
+  <div class="payment-cards">
+    <div class="payment-card"><div class="payment-card-label">Current State</div><div class="payment-card-text">BCBS state plans use Availity for EFT enrollment and online remittance viewing. HealthSpring's national MA provider network brings different payment enrollment workflows and clearinghouse relationships. Operating 27M members across two distinct provider payment infrastructures creates reconciliation friction, support cost, and provider experience inconsistency.</div><div class="optum-sa-tag">HealthSpring integration = two payment ecosystems to unify</div></div>
+    <div class="payment-card"><div class="payment-card-label">Settlement Advocate Opportunity</div><div class="payment-card-text">As HCSC integrates HealthSpring's national MA provider network, a unified provider payment platform reduces the administrative complexity of managing two distinct payment environments. Settlement Advocate's flexible EFT and vCC model can be rolled out as the standard payment delivery layer for the enlarged national footprint &mdash; directly supporting Smith's operational consolidation agenda.</div><div class="optum-sa-tag">Optum Settlement Advocate &mdash; Unified EFT + vCC across BCBS + HealthSpring providers</div></div>
+  </div></div><div id="hcsc-pri" class="section-content"><div class="priorities-grid"><div class="priority-card">
+      <div class="priority-header"><div class="priority-num">1</div><div class="priority-title">HealthSpring Integration &mdash; Claims &amp; Payment Standardization</div></div>
+      <div class="priority-body">Adding a 33-state HealthSpring footprint to a 5-state Blues base creates enormous payment policy and remittance standardization complexity. Unified provider payment delivery is an immediate operational priority.</div>
+      <div class="optum-solution-tag">Settlement Advocate + Claims Edit System + Comprehensive PI</div>
+    </div><div class="priority-card">
+      <div class="priority-header"><div class="priority-num">2</div><div class="priority-title">Data &amp; Analytics Innovation</div></div>
+      <div class="priority-body">Smith has specifically called out data and analytics innovation as driving better access and member engagement. At $88B scale, analytics connecting quality, utilization, and cost drive material outcomes.</div>
+      <div class="optum-solution-tag">Optum Performance Analytics + OptumIQ Data Integration</div>
+    </div><div class="priority-card">
+      <div class="priority-header"><div class="priority-num">3</div><div class="priority-title">Medicare Advantage &mdash; Stars &amp; Risk Adjustment</div></div>
+      <div class="priority-body">HealthSpring expansion makes HCSC a major MA player nationally. Stars performance and risk adjustment accuracy are now enterprise-scale P&L levers, not just product management issues.</div>
+      <div class="optum-solution-tag">Risk Analytics + Quality Solutions + Prospective Risk Solutions</div>
+    </div><div class="priority-card">
+      <div class="priority-header"><div class="priority-num">4</div><div class="priority-title">Care Management at Government Scale</div></div>
+      <div class="priority-body">DSNP operations (confirmed AHIP topic for HCSC) require coordinated care management across Medicaid and Medicare populations at scale. HealthSpring brings DSNP exposure that needs infrastructure.</div>
+      <div class="optum-solution-tag">Complex Care Management + Post-Acute Care + Care Coordination</div>
+    </div></div></div><div id="hcsc-q" class="section-content"><div class="questions-list"><div class="question-item"><div class="question-mark">?</div><div class="question-text">The HealthSpring acquisition took you from a 5-state Blues plan to a 33-state national platform overnight &mdash; how are you standardizing provider payment enrollment and remittance delivery across the two distinct provider populations?</div></div><div class="question-item"><div class="question-mark">?</div><div class="question-text">You've called out data and analytics innovation as a strategic priority &mdash; where are you still operating on fragmented data that's limiting what you can do operationally, especially post-HealthSpring?</div></div><div class="question-item"><div class="question-mark">?</div><div class="question-text">With Prime Therapeutics as your pharmacy backbone, how are you thinking about the tension between building capabilities there versus leveraging external pharmacy and specialty management solutions?</div></div><div class="question-item"><div class="question-mark">?</div><div class="question-text">DSNP is clearly a growth vector given your MMDC26 session &mdash; what's the care management infrastructure you need to build or buy to serve that population well at enterprise scale?</div></div></div></div>
+</div>
+<div id="panel-aetna" class="account-panel">
+  <div class="account-header">
+    <div class="account-header-left">
+      <div class="account-eyebrow">Tier 1 &middot; Confirmed Attending (Advisory Board)</div>
+      <div class="account-name">Aetna (CVS Health)</div>
+      <div class="account-meta"><span class="meta-chip">22.1M medical members</span><span class="meta-chip">CVS Health subsidiary</span><span class="meta-chip">81%+ MA members in 4+ star plans</span><span class="meta-chip">HBR improved: 92.8% Q3 2025</span></div>
+    </div>
+    <div class="account-header-right">
+      <div class="confidence-badge conf-confirmed">Confirmed &mdash; Advisory Board</div>
+      <div class="intent-signals"><span class="intent-num">81%</span>MA members 4+ star</div>
+    </div>
+  </div>
+  <div class="section-tabs"><button class="section-tab active" onclick="showSection(this,'aet-why')">Overview &amp; Why Now</button><button class="section-tab" onclick="showSection(this,'aet-conn')">Connections</button><button class="section-tab" onclick="showSection(this,'aet-pay')">Payment Intelligence</button><button class="section-tab" onclick="showSection(this,'aet-pri')">Priorities &amp; Messaging</button><button class="section-tab" onclick="showSection(this,'aet-q')">Questions to Ask</button></div>
+  <div id="aet-why" class="section-content active"><div class="why-grid">
+    <div class="why-card"><div class="why-card-label">Why This Account</div><div class="why-card-text">Major commercial and Medicare Advantage carrier under CVS Health. Steve Nelson joined as President November 2024 &mdash; former CEO of UnitedHealthcare, deep Optum institutional history. Under Nelson, Aetna earned industry-leading MA Star Ratings for 2026. HBR recovered from 95.2% to 92.8% in Q3 2025.</div></div>
+    <div class="why-card"><div class="why-card-label">Why Now</div><div class="why-card-text">Nelson is 18 months into a turnaround with measurable results &mdash; focused on disciplined Group MA repricing (3&ndash;5 year cycles), Part D derisking, and IFP wind-down. These are execution-phase decisions where Optum's operational capabilities accelerate outcomes. Nelson knows Optum well from UHC &mdash; this is a warm conversation, not a cold sale.</div></div>
+  </div>
+  <div class="hypothesis-box"><div class="hypothesis-label">Messaging Hypothesis</div><div class="hypothesis-text">Optum can accelerate Aetna's turnaround by providing the claims editing, utilization management, payment integrity, and provider payment infrastructure that Nelson knows well from UHC &mdash; specifically supporting MA margin recovery, Part D cost management, prior auth modernization, and Settlement Advocate for provider payment streamlining at scale.</div></div>
+  <div style="margin-top:18px;">
+    <div style="font-size:10px;font-weight:700;letter-spacing:1.8px;text-transform:uppercase;color:var(--accent);margin-bottom:10px;">AHIP 2026 ATTENDANCE</div>
+    <div class="people-stack"><div class="attendance-card">
+  <div class="attendance-header">
+    <div class="attendance-person">
+      <div class="attendance-name">Steve Nelson</div>
+      <div class="attendance-role">EVP &amp; President &middot; Aetna (CVS Health)</div>
+    </div>
+    <div class="attendance-status status-board">Advisory Board</div>
+  </div>
+  <div class="session-block" style="border-left-color:var(--ink-muted);"><div class="session-desc" style="margin:0;">Confirmed AHIP26 Advisory Board member. Not listed as a session speaker but present for the full event. Former CEO of UnitedHealthcare &mdash; warm conversation, not a cold intro. Any senior Optum or UHC executive who worked with Nelson has a direct warm path. Advisory Board members engage throughout the full two days.</div></div>
+  <div class="attendance-note">Nelson knows Optum deeply from his UHC tenure. The UHG alumni warm intro should be activated now &mdash; before the event &mdash; not at it. Use the Advisory Board attendance to confirm a bilateral meeting.</div>
+</div><div class="attendance-card">
+  <div class="attendance-header">
+    <div class="attendance-person">
+      <div class="attendance-name">Rodrigo Cerd&aacute;, MD, MPH</div>
+      <div class="attendance-role">Chief Medical Officer, Commercial &middot; Aetna, a CVS Health Company</div>
+    </div>
+    <div class="attendance-status status-speaker">Confirmed Speaker</div>
+  </div>
+  <div class="session-block">
+    <div class="session-title">Rewriting Chronic Care: How Plans Are Driving Better Outcomes</div>
+    <div class="session-meta">Jun 9, 2026 &middot; 11:40 am &ndash; 12:25 pm &middot; Concurrent Session Series 1 &middot; Promoting Prevention &amp; Population Health</div>
+    <div class="session-desc">Panel on how health plans are redesigning chronic care delivery to improve outcomes. Co-panelists: Hyong (Ken) Kim MD (Alignment Health) and Howard Shaps MD (AmeriHealth Caritas). Maps to Aetna's MA turnaround and care management priorities.</div>
+    <a href="#aet-q" class="session-cta" onclick="scrollToQ('aet-q')">&#8594; See prep questions</a>
+  </div>
+  <div class="attendance-note">Natural post-session introduction that bridges to the broader operational and payment integrity conversation with Nelson.</div>
+</div><div class="attendance-card">
+  <div class="attendance-header">
+    <div class="attendance-person">
+      <div class="attendance-name">Elyse Pegler, MPH</div>
+      <div class="attendance-role">Director &middot; Aetna, a CVS Health Company</div>
+    </div>
+    <div class="attendance-status status-speaker">Confirmed Speaker</div>
+  </div>
+  <div class="session-block">
+    <div class="session-title">Value-Based Innovation to Drive Outcomes</div>
+    <div class="session-meta">Jun 9, 2026 &middot; 11:40 am &ndash; 12:25 pm &middot; Peer Connect Roundtable</div>
+    <div class="session-desc">Peer connect roundtable on value-based care innovation and outcomes.</div>
+    
+  </div>
+  
+</div></div>
+  </div>
+</div>
+<div id="aet-conn" class="section-content"><div class="connections-list"><div class="connection-card">
+      <div class="connection-icon">&#11088;</div>
+      <div class="connection-body"><div class="connection-path">UnitedHealthcare / Optum alumni network &rarr; Steve Nelson (direct)</div><div class="connection-note">Nelson was CEO of UnitedHealthcare 2017&ndash;2019 and held multiple leadership roles there before that. Any senior Optum or UHC executive who worked with Nelson directly has a genuine warm path. Easiest warm intro of all eight accounts.</div></div>
+      <div class="connection-strength strength-direct">Direct Alumni</div>
+    </div></div></div><div id="aet-pay" class="section-content"><div class="payment-alert">
+    <div class="payment-alert-icon">&#x1F4B3;</div>
+    <div class="payment-alert-body"><div class="payment-alert-title">Payment Infrastructure Signal &mdash; Turnaround Creates Provider Payment Modernization Opportunity</div><div class="payment-alert-text">Aetna processes payments across Commercial, Medicare Advantage, and Medicaid lines under CVS Health's integrated infrastructure. The turnaround context means every source of provider friction or remittance inaccuracy is under review. Nelson has explicitly cited &ldquo;strengthened management rigor&rdquo; as driving improved insight. Payment accuracy, remittance quality, and provider experience are direct levers in the MA margin recovery &mdash; and Nelson knows exactly how Optum approaches this from his UHC tenure.</div></div>
+  </div>
+  <div class="payment-cards">
+    <div class="payment-card"><div class="payment-card-label">Current State</div><div class="payment-card-text">Aetna processes payments across Commercial, MA, and Medicaid under CVS Health's infrastructure. Turnaround context means any provider friction or remittance inaccuracy is a cost and relationship risk. Nelson's operational rigor mandate extends to ensuring payment operations don't undermine the margin recovery achieved in Stars and HBR.</div><div class="optum-sa-tag">Turnaround mandate = every friction point under scrutiny</div></div>
+    <div class="payment-card"><div class="payment-card-label">Settlement Advocate Opportunity</div><div class="payment-card-text">Nelson understands Optum's capabilities intimately from UHC. The Settlement Advocate conversation doesn't need education &mdash; it needs a specific use case tied to his turnaround metrics. Position it as a provider payment modernization that reduces abrasion, improves remittance accuracy, and supports the MA Stars performance Aetna has now achieved and must defend.</div><div class="optum-sa-tag">Optum Settlement Advocate &mdash; EFT + vCC + MA provider payment modernization</div></div>
+  </div></div><div id="aet-pri" class="section-content"><div class="priorities-grid"><div class="priority-card">
+      <div class="priority-header"><div class="priority-num">1</div><div class="priority-title">MA Margin Recovery &mdash; Group MA Repricing</div></div>
+      <div class="priority-body">Nelson is disciplined repricing Group MA contracts on 3&ndash;5 year cycles. Payment integrity and utilization management directly support margin recovery without requiring membership cuts.</div>
+      <div class="optum-solution-tag">Claims Edit System + Comprehensive PI + InterQual Auth Accelerator</div>
+    </div><div class="priority-card">
+      <div class="priority-header"><div class="priority-num">2</div><div class="priority-title">Provider Payment Modernization</div></div>
+      <div class="priority-body">Turnaround context puts every source of provider abrasion under review. Settlement Advocate's flexible EFT and vCC model reduces friction in provider payment and remittance &mdash; supporting Nelson's operational rigor mandate and MA Stars retention.</div>
+      <div class="optum-solution-tag">Optum Settlement Advocate &mdash; EFT + vCC + Remittance</div>
+    </div><div class="priority-card">
+      <div class="priority-header"><div class="priority-num">3</div><div class="priority-title">Part D Derisking &mdash; IRA Impact</div></div>
+      <div class="priority-body">Nelson simplified to a single standard Part D plan to derisk IRA complexity. Pharmacy cost management and benefit design visibility are ongoing. Optum Rx transparent pharmacy care model is directly relevant.</div>
+      <div class="optum-solution-tag">Optum Rx Transparent Pharmacy + PreCheck Prior Auth</div>
+    </div><div class="priority-card">
+      <div class="priority-header"><div class="priority-num">4</div><div class="priority-title">Prior Auth Modernization</div></div>
+      <div class="priority-body">Nelson explicitly cited &ldquo;strengthened operations and management rigor.&rdquo; Nelson knows InterQual from UHC &mdash; no education needed, straight to implementation conversation.</div>
+      <div class="optum-solution-tag">InterQual Auth Accelerator + Digital Auth Complete</div>
+    </div></div></div><div id="aet-q" class="section-content"><div class="questions-list"><div class="question-item"><div class="question-mark">?</div><div class="question-text">You've made strong progress on the MA turnaround &mdash; HBR and Stars both improved significantly. What's the provider payment and remittance friction you're still carrying that's creating unnecessary administrative cost or provider abrasion?</div></div><div class="question-item"><div class="question-mark">?</div><div class="question-text">Simplifying to a single standard Part D plan was a bold derisking move &mdash; how are you managing the provider and member communication around that transition, and what's the biggest risk you're watching?</div></div><div class="question-item"><div class="question-mark">?</div><div class="question-text">You've been explicit about &ldquo;strengthened management rigor&rdquo; &mdash; where in claims, utilization management, and payment integrity do you feel that rigor is still not where it needs to be to defend the progress you've made?</div></div><div class="question-item"><div class="question-mark">?</div><div class="question-text">CVS Health's integrated model spans Caremark, Aetna, and MinuteClinic &mdash; how close are the payment and data operations to actually sharing infrastructure in ways that reduce total administrative cost?</div></div></div></div>
+</div>
+</main>
+<footer class="site-footer">
+  <div class="footer-left">&copy;Vieu 2026 &middot; Connect to Close | Built on 9B Executive Relationships &middot; Intelligence current as of June 5, 2026</div>
+  <div class="footer-right">Optum Insight + Optum Financial &middot; AHIP 2026 Pre-Event Guide</div>
+</footer>
+<script>
+function scrollToQ(anchor){
+  // Find the questions tab for the current active panel and activate it
+  var panel = document.querySelector('.account-panel.active');
+  if(!panel) return;
+  var qtab = Array.from(panel.querySelectorAll('.section-tab')).find(t => t.getAttribute('onclick') && t.getAttribute('onclick').includes('-q'));
+  if(qtab) { showSection(qtab, qtab.getAttribute('onclick').match(/'([^']+)'/)[1]); }
+  setTimeout(function(){ var el = document.getElementById(anchor); if(el) el.scrollIntoView({behavior:'smooth',block:'start'}); }, 150);
+}
+function showAccount(id,tabEl){
+  document.querySelectorAll('.account-panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.account-tab').forEach(t=>t.classList.remove('active'));
+  var panel=document.getElementById('panel-'+id);
+  if(panel)panel.classList.add('active');
+  tabEl.classList.add('active');
+}
+function showSection(tabEl,contentId){
+  var panel=tabEl.closest('.account-panel');
+  panel.querySelectorAll('.section-tab').forEach(t=>t.classList.remove('active'));
+  panel.querySelectorAll('.section-content').forEach(c=>c.classList.remove('active'));
+  tabEl.classList.add('active');
+  var content=document.getElementById(contentId);
+  if(content)content.classList.add('active');
+}
+</script>
+</body>
+</html>
